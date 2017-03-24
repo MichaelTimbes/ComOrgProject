@@ -1,7 +1,9 @@
 import serial
 import io
-#ser = serial.Serial('COM6', 9600, timeout=3, parity=serial.PARITY_EVEN, rtscts=1)
+#For Windows:
 ser = serial.Serial('COM6')
+#For Unix:
+#ser = serial.Serial('/dev/ttyUSB0')
 sio = io.TextIOWrapper(io.BufferedRWPair(ser, ser))
 print(ser.name)
 while True:
