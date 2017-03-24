@@ -4,7 +4,7 @@ import io
 ser = serial.Serial('COM6')
 #For Unix:
 #ser = serial.Serial('/dev/ttyUSB0')
-sio = io.TextIOWrapper(io.BufferedRWPair(ser, ser))
+sio = io.TextIOWrapper(io.BufferedRWPair(ser, ser)) #Needed for later writing from buff
 print(ser.name)
 while True:
     line = ser.readline()
