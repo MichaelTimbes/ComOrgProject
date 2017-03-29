@@ -2,12 +2,14 @@
 # Currently includes:
 # - Title
 # - Digital Clock that updates every 200ms
-# -
+# - Weather Information
+# - Most recent tweet from POTUS
 
 from Tkinter import *
 import time
 import requests
 import tweepy
+import datetime
 
 fonttype = 'times'
 fontstyle = 'bold'
@@ -56,11 +58,23 @@ def twitterAPICall():
 
     api = tweepy.API(auth)
 
-    potus_tweet = api.user_timeline(screen_name = 'potus',count=5)
+    potus_tweet = api.user_timeline(screen_name = 'potus',count=2)
 
     print potus_tweet[0].text
 
     PotusTweet.config(text = potus_tweet[0].text)
+
+def timeOfDay():
+    currentTime = datetime.datetime.now()
+    if currentTime.hour < 12:
+        print('Good morning.')
+        DayGreet.config(text = 'Good Morning Handsome')
+    elif 12 <= currentTime.hour < 18:
+        print('Good afternoon.')
+        DayGreet.config(text = 'Good Afternoon Handsome')
+    else:
+        print('Good evening.')
+        DayGreet.config(text = 'Good Evening Handsome')
 
 ###################################################
 
@@ -87,7 +101,12 @@ WeatherTemp.pack(side = RIGHT, expand =0)
 # Title Object
 Title = Label(root, font=(fonttype, 80, fontstyle), bg='black',fg='white')
 Title.pack(side=TOP,expand=0)
-Title.config(text = 'SMART MIRROR')
+#Title.config(text = 'SMART MIRROR')
+
+# Greeting Object
+DayGreet = Label(root, font=(fonttype, 70, fontstyle), bg='black',fg='white')
+DayGreet.pack(side=TOP,expand=0)
+
 
 #Footer
 Title = Label(root, font=(fonttype,20, fontstyle), bg='black',fg='white')
@@ -95,7 +114,7 @@ Title.pack(side=BOTTOM,expand=0)
 Title.config(text = 'Project by Group 1: Dominic Critchlow, Travis Hodge, Dylan Kellogg, Michael Timbes')
 
 # POTUS Twitter
-PotusTweet = Label(root, font=(fonttype,15,fontstyle),bg='black',fg= 'white')
+PotusTweet = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= 'white')
 PotusTweet.pack(expand = 0)
 ###################################################
 
@@ -107,6 +126,7 @@ PotusTweet.pack(expand = 0)
 clockUpdate()
 weatherAPICall()
 twitterAPICall()
+timeOfDay()
 ###################################################
 
 
