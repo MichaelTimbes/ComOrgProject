@@ -4,6 +4,7 @@
 # - Digital Clock that updates every 200ms
 # - Weather Information
 # - Most recent tweet from POTUS
+# - Greeting Daytime
 
 from Tkinter import *
 import time
@@ -17,8 +18,10 @@ fontstyle = 'bold'
 # Functions to be repeated and updated while running
 def clockUpdate():
     global time1
+    today = datetime.date.today()
     # get the current local time from the PC
     time2 = time.strftime('%H:%M:%S')
+    time2 = time2 + '\n'+str(today)
     # if time string has changed, update it
     if time2 != time1:
         time1 = time2
@@ -26,6 +29,7 @@ def clockUpdate():
     # calls itself every 200 milliseconds
     # to update the time display as needed
     # could use >200 ms, but display gets jerky
+    timeOfDay()
     Clock.after(200, clockUpdate)
 
 
@@ -41,10 +45,11 @@ def weatherAPICall():
         print('Something went wrong')
 
     print data
-
+    t = u"\u00b0"
     WeatherTemp.config(text = data[u'weather'][0][u'description']
                         + '\nTemperature: '
-                        + str(data[u'main'][u'temp']))
+                        + str(data[u'main'][u'temp'])
+                        + t + 'C')
 
 
 def twitterAPICall():
@@ -67,13 +72,10 @@ def twitterAPICall():
 def timeOfDay():
     currentTime = datetime.datetime.now()
     if currentTime.hour < 12:
-        print('Good morning.')
         DayGreet.config(text = 'Good Morning Handsome')
     elif 12 <= currentTime.hour < 18:
-        print('Good afternoon.')
         DayGreet.config(text = 'Good Afternoon Handsome')
     else:
-        print('Good evening.')
         DayGreet.config(text = 'Good Evening Handsome')
 
 ###################################################
@@ -104,7 +106,7 @@ Title.pack(side=TOP,expand=0)
 #Title.config(text = 'SMART MIRROR')
 
 # Greeting Object
-DayGreet = Label(root, font=(fonttype, 70, fontstyle), bg='black',fg='white')
+DayGreet = Label(root, font=(fonttype, 65, fontstyle), bg='black',fg='white')
 DayGreet.pack(side=TOP,expand=0)
 
 
@@ -126,7 +128,7 @@ PotusTweet.pack(expand = 0)
 clockUpdate()
 weatherAPICall()
 twitterAPICall()
-timeOfDay()
+#timeOfDay()
 ###################################################
 
 
