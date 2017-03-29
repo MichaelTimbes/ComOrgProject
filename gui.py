@@ -12,26 +12,24 @@ import requests
 import tweepy
 import datetime
 
-fonttype = 'times'
+fonttype = 'adobe' # different maybe franklin
 fontstyle = 'bold'
+
 ###################################################
 # Functions to be repeated and updated while running
 def clockUpdate():
     global time1
     today = datetime.date.today()
-    # get the current local time from the PC
+
     time2 = time.strftime('%H:%M:%S')
     time2 = time2 + '\n'+str(today)
-    # if time string has changed, update it
+
     if time2 != time1:
         time1 = time2
         Clock.config(text=time2)
-    # calls itself every 200 milliseconds
-    # to update the time display as needed
-    # could use >200 ms, but display gets jerky
+
     timeOfDay()
     Clock.after(200, clockUpdate)
-
 
 def weatherAPICall():
     url = 'http://api.openweathermap.org/data/2.5/weather?APPID=301e59e1ab9370e1f7644445df46f156' # url goes here
@@ -51,22 +49,17 @@ def weatherAPICall():
                         + str(data[u'main'][u'temp'])
                         + t + 'C')
 
-
 def twitterAPICall():
     consumer_key= '5Sgpga1fHgZ9IxAC5oKMXdHod'
     consumer_secret= 'fU4DN8njObtDCFnr6gYMo03e40O53iJQ2VDdzOP89zuMabJfFJ'
     access_token='3783517036-bA3q6lemHcLgu9QFOX0FJMoqUYR1UPLlaNKQO0g'
     access_token_secret='CEguhLq6UtHzUw304tzjM4iO3WhgkmUfDyAeMhEn19Xhn'
-
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
-
     api = tweepy.API(auth)
 
     potus_tweet = api.user_timeline(screen_name = 'potus',count=2)
-
     print potus_tweet[0].text
-
     PotusTweet.config(text = potus_tweet[0].text)
 
 def timeOfDay():
@@ -74,7 +67,7 @@ def timeOfDay():
     if currentTime.hour < 12:
         DayGreet.config(text = 'Good Morning Handsome')
     elif 12 <= currentTime.hour < 18:
-        DayGreet.config(text = 'Good Afternoon Handsome')
+        DayGreet.config(text = 'Good Afternoon \nHandsome')
     else:
         DayGreet.config(text = 'Good Evening Handsome')
 
@@ -109,11 +102,10 @@ Title.pack(side=TOP,expand=0)
 DayGreet = Label(root, font=(fonttype, 65, fontstyle), bg='black',fg='white')
 DayGreet.pack(side=TOP,expand=0)
 
-
 #Footer
 Title = Label(root, font=(fonttype,20, fontstyle), bg='black',fg='white')
 Title.pack(side=BOTTOM,expand=0)
-Title.config(text = 'Project by Group 1: Dominic Critchlow, Travis Hodge, Dylan Kellogg, Michael Timbes')
+Title.config(text = 'Project by Group 1: \nDominic Critchlow, Travis Hodge, Dylan Kellogg, Michael Timbes')
 
 # POTUS Twitter
 PotusTweet = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= 'white')
