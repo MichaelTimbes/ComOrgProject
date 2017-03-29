@@ -7,8 +7,10 @@
 from Tkinter import *
 import time
 import requests
+import tweepy
 
-
+fonttype = 'times'
+fontstyle = 'bold'
 ###################################################
 # Functions to be repeated and updated while running
 def clockUpdate():
@@ -41,6 +43,25 @@ def weatherAPICall():
     WeatherTemp.config(text = data[u'weather'][0][u'description']
                         + '\nTemperature: '
                         + str(data[u'main'][u'temp']))
+
+
+def twitterAPICall():
+    consumer_key= '5Sgpga1fHgZ9IxAC5oKMXdHod'
+    consumer_secret= 'fU4DN8njObtDCFnr6gYMo03e40O53iJQ2VDdzOP89zuMabJfFJ'
+    access_token='3783517036-bA3q6lemHcLgu9QFOX0FJMoqUYR1UPLlaNKQO0g'
+    access_token_secret='CEguhLq6UtHzUw304tzjM4iO3WhgkmUfDyAeMhEn19Xhn'
+
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_token, access_token_secret)
+
+    api = tweepy.API(auth)
+
+    potus_tweet = api.user_timeline(screen_name = 'potus',count=5)
+
+    print potus_tweet[0].text
+
+    PotusTweet.config(text = potus_tweet[0].text)
+
 ###################################################
 
 
@@ -56,21 +77,26 @@ root = Tk()
 ###################################################
 # Clock Object
 time1 = ''
-Clock = Label(root, font=('times', 40, 'bold'), bg='black',fg='white')
+Clock = Label(root, font=(fonttype, 40, fontstyle), bg='black',fg='white')
 Clock.pack(side=LEFT,expand=0)
 
-WeatherTemp = Label(root, font=('times',40,'bold'),bg='black',fg= 'white')
+# Weather Object
+WeatherTemp = Label(root, font=(fonttype,40,fontstyle),bg='black',fg= 'white')
 WeatherTemp.pack(side = RIGHT, expand =0)
 
 # Title Object
-Title = Label(root, font=('times', 80, 'bold'), bg='black',fg='white')
+Title = Label(root, font=(fonttype, 80, fontstyle), bg='black',fg='white')
 Title.pack(side=TOP,expand=0)
 Title.config(text = 'SMART MIRROR')
 
 #Footer
-Title = Label(root, font=('times',20, 'bold'), bg='black',fg='white')
+Title = Label(root, font=(fonttype,20, fontstyle), bg='black',fg='white')
 Title.pack(side=BOTTOM,expand=0)
-Title.config(text = 'Project by: Dominic Critchlow, Travis Hodge, Dylan Kellogg, Michael Timbes')
+Title.config(text = 'Project by Group 1: Dominic Critchlow, Travis Hodge, Dylan Kellogg, Michael Timbes')
+
+# POTUS Twitter
+PotusTweet = Label(root, font=(fonttype,15,fontstyle),bg='black',fg= 'white')
+PotusTweet.pack(expand = 0)
 ###################################################
 
 
@@ -80,6 +106,7 @@ Title.config(text = 'Project by: Dominic Critchlow, Travis Hodge, Dylan Kellogg,
 # Call Function for items
 clockUpdate()
 weatherAPICall()
+twitterAPICall()
 ###################################################
 
 
