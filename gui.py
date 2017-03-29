@@ -11,6 +11,7 @@ import time
 import requests
 import tweepy
 import datetime
+import xmltodict
 
 fonttype = 'adobe' # different maybe franklin
 fontstyle = 'bold'
@@ -137,6 +138,7 @@ PotusTweet.pack(expand = 0)
 clockUpdate()
 weatherAPICall()
 twitterAPICall()
+stockAPICall()
 #timeOfDay()
 ###################################################
 
