@@ -31,6 +31,18 @@ def clockUpdate():
     timeOfDay()
     Clock.after(200, clockUpdate)
 
+def stockAPICall():
+    url1 = "http://dev.markitondemand.com/MODApis/Api/v2/Quote"
+    parameters = {'symbol':"AAPL", 'callback':"jsoncallback"}
+    stock = requests.get(url1, params=parameters)
+    if stock.status_code == 200:
+        data1 = xmltodict.parse(stock.content)
+
+    print data1
+    stockData.config(text = "Stock: " + data1[u'StockQuote'][u'Name']
+                            +"\nStock Price: " + data1[u'StockQuote'][u'LastPrice'])
+
+
 def weatherAPICall():
     url = 'http://api.openweathermap.org/data/2.5/weather?APPID=301e59e1ab9370e1f7644445df46f156' # url goes here
     location = 'Clarksville' # adjust as required
@@ -92,6 +104,11 @@ Clock.pack(side=LEFT,expand=0)
 # Weather Object
 WeatherTemp = Label(root, font=(fonttype,40,fontstyle),bg='black',fg= 'white')
 WeatherTemp.pack(side = RIGHT, expand =0)
+
+#Stock Object
+stockData = Label(root, font=(fonttype,40,fontstyle),bg='black',fg= 'white')
+stockData.pack(side = RIGHT, expand =0)
+stockData.place(x=900, y=400)
 
 # Title Object
 Title = Label(root, font=(fonttype, 80, fontstyle), bg='black',fg='white')
