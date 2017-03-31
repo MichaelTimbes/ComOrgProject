@@ -29,28 +29,25 @@ except ImportError:
     flags = None
 
 
-SCOPES = 'https://www.googleapis.com/auth/calendar.readonly'
-CLIENT_SECRET_FILE = 'client_secret.json'
-APPLICATION_NAME = 'Google Calendar API Python Quickstart'
+SCOPES_cal = 'https://www.googleapis.com/auth/calendar.readonly'
+CLIENT_SECRET_FILE_cal = 'client_secret.json'
+APPLICATION_NAME_cal = 'Google Calendar API Python Quickstart'
+
+SCOPES_gmail = 'https://www.googleapis.com/auth/gmail.readonly'
+CLIENT_SECRET_FILE_gmail = 'client_secret.json'
+APPLICATION_NAME_gmail = 'Gmail API Python Quickstart'
 
 
 fonttype = 'adobe' # different maybe franklin
 fontstyle = 'bold'
+forground = 'white'
 
 
 
 
 
+def get_credentials_calendar():
 
-def get_credentials():
-    """Gets valid user credentials from storage.
-
-    If nothing has been stored, or if the stored credentials are invalid,
-    the OAuth2 flow is completed to obtain the new credentials.
-
-    Returns:
-        Credentials, the obtained credential.
-    """
     home_dir = os.path.expanduser('~')
     credential_dir = os.path.join(home_dir, '.credentials')
     if not os.path.exists(credential_dir):
@@ -61,8 +58,8 @@ def get_credentials():
     store = Storage(credential_path)
     credentials = store.get()
     if not credentials or credentials.invalid:
-        flow = client.flow_from_clientsecrets(CLIENT_SECRET_FILE, SCOPES)
-        flow.user_agent = APPLICATION_NAME
+        flow = client.flow_from_clientsecrets(CLIENT_SECRET_FILE_cal, SCOPES_cal)
+        flow.user_agent = APPLICATION_NAME_cal
         if flags:
             credentials = tools.run_flow(flow, store, flags)
         else: # Needed only for compatibility with Python 2.6
@@ -70,7 +67,26 @@ def get_credentials():
         print('Storing credentials to ' + credential_path)
     return credentials
 
+def get_credentials_gmail():
 
+    home_dir = os.path.expanduser('~')
+    credential_dir = os.path.join(home_dir, '.credentials')
+    if not os.path.exists(credential_dir):
+        os.makedirs(credential_dir)
+    credential_path = os.path.join(credential_dir,
+                                   'gmail-python-quickstart.json')
+
+    store = Storage(credential_path)
+    credentials = store.get()
+    if not credentials or credentials.invalid:
+        flow = client.flow_from_clientsecrets(CLIENT_SECRET_FILE_gmail, SCOPES_gmail)
+        flow.user_agent = APPLICATION_NAME_gmail
+        if flags:
+            credentials = tools.run_flow(flow, store, flags)
+        else: # Needed only for compatibility with Python 2.6
+            credentials = tools.run(flow, store)
+        print('Storing credentials to ' + credential_path)
+    return credentials
 
 ###################################################
 # Functions to be repeated and updated while running
@@ -144,12 +160,8 @@ def timeOfDay():
 
 
 def calendarAPICall():
-    """Shows basic usage of the Google Calendar API.
 
-    Creates a Google Calendar API service object and outputs a list of the next
-    10 events on the user's calendar.
-    """
-    credentials = get_credentials()
+    credentials = get_credentials_calendar()
     http = credentials.authorize(httplib2.Http())
     service = discovery.build('calendar', 'v3', http=http)
 
@@ -157,7 +169,7 @@ def calendarAPICall():
     print (now)
     print('Getting the upcoming 10 events')
     eventsResult = service.events().list(
-        calendarId='primary', timeMin=now, maxResults=10, singleEvents=True,
+        calendarId='primary', timeMin=now, maxResults=5, singleEvents=True,
         orderBy='startTime').execute()
     events = eventsResult.get('items', [])
 
@@ -169,6 +181,37 @@ def calendarAPICall():
         print(start, event['summary'])
     CalenderLabel.config(text = events[0]['start'].get('dateTime', events[0]['start'].get('date'))
     + " " + events[0]['summary'])
+
+def gmailAPICall():
+    """Shows basic usage of the Gmail API.
+
+    Creates a Gmail API service object and outputs a list of label names
+    of the user's Gmail account.
+    """
+    credentials = get_credentials_gmail()
+    http = credentials.authorize(httplib2.Http())
+    service = discovery.build('gmail', 'v1', http=http)
+
+    results1 = service.users().messages().list(userId = 'me', q = 'is:unread').execute()
+    unread_mes_num = results1.get(u'resultSizeEstimate')
+    unread_mes_id = results1.get(u'messages',[])
+    print ("number of message: " + str(unread_mes_num) + '\n ')
+    print (unread_mes_id)
+
+    subject = [None]*10
+    i=0
+    for unreads in unread_mes_id:
+        message1 = service.users().messages().get(userId='me', id=unreads[u'id'], format='metadata').execute()
+        msg = message1[u'payload']
+
+        for header in msg[u'headers']:
+            if header[u'name'] == u'Subject':
+                subject[i] = header[u'value']
+                break
+        if subject:
+            print (subject)
+        i += 1
+    GmailLabel.config(text=(subject[0] + "\n" + subject[1]))
 
 ###################################################
 
@@ -185,41 +228,44 @@ root = Tk()
 ###################################################
 # Clock Object
 time1 = ''
-Clock = Label(root, font=(fonttype, 40, fontstyle), bg='black',fg='white')
+Clock = Label(root, font=(fonttype, 40, fontstyle), bg='black',fg=forground)
 Clock.pack(side=LEFT,expand=0)
 
 # Weather Object
-WeatherTemp = Label(root, font=(fonttype,40,fontstyle),bg='black',fg= 'white')
+WeatherTemp = Label(root, font=(fonttype,40,fontstyle),bg='black',fg= forground)
 WeatherTemp.pack(side = RIGHT, expand =0)
 
 #Stock Object
-stockData = Label(root, font=(fonttype,40,fontstyle),bg='black',fg= 'white')
+stockData = Label(root, font=(fonttype,40,fontstyle),bg='black',fg= forground)
 stockData.pack(side = RIGHT, expand =0)
 stockData.place(x=900, y=700)
 
 # Title Object
-Title = Label(root, font=(fonttype, 80, fontstyle), bg='black',fg='white')
+Title = Label(root, font=(fonttype, 80, fontstyle), bg='black',fg=forground)
 Title.pack(side=TOP,expand=0)
 #Title.config(text = 'SMART MIRROR')
 
 # Greeting Object
-DayGreet = Label(root, font=(fonttype, 65, fontstyle), bg='black',fg='white')
+DayGreet = Label(root, font=(fonttype, 65, fontstyle), bg='black',fg=forground)
 DayGreet.pack(side=TOP,expand=0)
 
 #Footer
-Title = Label(root, font=(fonttype,20, fontstyle), bg='black',fg='white')
+Title = Label(root, font=(fonttype,20, fontstyle), bg='black',fg=forground)
 Title.pack(side=BOTTOM,expand=0)
 Title.config(text = 'Project by Group 1: \nDominic Critchlow, Travis Hodge, Dylan Kellogg, Michael Timbes')
 
 # POTUS Twitter
-PotusTweet = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= 'white')
+PotusTweet = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= forground)
 PotusTweet.pack(expand = 0)
 
 # Calendar Label
-###################################################
-CalenderLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= 'white')
+CalenderLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= forground)
 CalenderLabel.pack(expand = 0)
 
+# Gmail Label
+GmailLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= forground)
+GmailLabel.pack(expand = 0)
+###################################################
 
 
 ###################################################
@@ -229,6 +275,7 @@ weatherAPICall()
 stockAPICall()
 twitterAPICall()
 calendarAPICall()
+gmailAPICall()
 ###################################################
 
 
