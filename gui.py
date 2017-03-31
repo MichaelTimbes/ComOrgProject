@@ -192,7 +192,7 @@ def gmailAPICall():
     http = credentials.authorize(httplib2.Http())
     service = discovery.build('gmail', 'v1', http=http)
 
-    results1 = service.users().messages().list(userId = 'me', q = 'is:unread').execute()
+    results1 = service.users().messages().list(userId = 'me', q = 'is:unread',maxResults = 5).execute()
     unread_mes_num = results1.get(u'resultSizeEstimate')
     unread_mes_id = results1.get(u'messages',[])
     print ("number of message: " + str(unread_mes_num) + '\n ')
@@ -211,7 +211,7 @@ def gmailAPICall():
         if subject:
             print (subject)
         i += 1
-    GmailLabel.config(text=(subject[0] + "\n" + subject[1]))
+    GmailLabel.config(text=(subject[0] + "\n"))
 
 ###################################################
 
