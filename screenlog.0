@@ -1,0 +1,1276 @@
+
+Poky (Yocto Project Reference Distro) 1.7.3 edison ttyMFD2
+
+edison login: 
+Poky (Yocto Project Reference Distro) 1.7.3 edison ttyMFD2
+
+edison login: root
+Password: 
+root@edison:~# ls
+Python-3.6.0  Python-3.6.0.tgz	hi.txt	readme	test.py
+root@edison:~# rm Python-3.6.0
+Python-3.6.0/     Python-3.6.0.tgz  
+root@edison:~# rm Python-3.6.0.tgz
+root@edison:~# ls
+Python-3.6.0  hi.txt  readme  test.py
+root@edison:~# clear
+[H[Jroot@edison:~# ls
+Python-3.6.0  hi.txt  readme  test.py
+root@edison:~# wget https://bootstrap.pypa.io/get-pip.py --no-check-certificate  [Aroot@edison:~# wget https://bootstrap.pypa.io/get-pip.py --no-check-certificate[K 
+--2017-04-02 01:41:45--  https://bootstrap.pypa.io/get-pip.py
+Resolving bootstrap.pypa.io... 151.101.56.175
+Connecting to bootstrap.pypa.io|151.101.56.175|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1595408 (1.5M) [text/x-python]
+Saving to: 'get-pip.py'
+
+ 0% [                                       ] 0           --.-K/s              22% [=======>                               ] 358,035     1.65MB/s             50% [==================>                    ] 806,675     1.87MB/s             78% [=============================>         ] 1,249,043   1.94MB/s             100%[======================================>] 1,595,408   1.95MB/s   in 0.8s   
+
+2017-04-02 01:41:47 (1.95 MB/s) - 'get-pip.py' saved [1595408/1595408]
+
+root@edison:~# clear
+[H[Jroot@edison:~# python get-pip.py
+Collecting pip
+  Downloading pip-9.0.1-py2.py3-none-any.whl (1.3MB)
+[?25l[K    0% |                                | 10kB 2.7MB/s eta 0:00:01[K    1% |                                | 20kB 1.0MB/s eta 0:00:02[K    2% |                                | 30kB 784kB/s eta 0:00:02[K    3% |#                               | 40kB 756kB/s eta 0:00:02[K    4% |#                               | 51kB 795kB/s eta 0:00:02[K    4% |#                               | 61kB 908kB/s eta 0:00:02[K    5% |#                               | 71kB 949kB/s eta 0:00:02[K    6% |##                              | 81kB 1.0MB/s eta 0:00:02[K    7% |##                              | 92kB 1.1MB/s eta 0:00:02[K    8% |##                              | 102kB 1.2MB/s eta 0:00:01[K    8% |##                              | 112kB 1.2MB/s eta 0:00:01[K    9% |###                             | 122kB 1.3MB/s eta 0:00:01[K    10% |###                             | 133kB 1.6MB/s eta 0:00:01[K    11% |###                             | 143kB 1.9MB/s eta 0:00:01[K    12% |###                             | 153kB 2.2MB/s eta 0:00:01[K    13% |####                            | 163kB 1.9MB/s eta 0:00:01[K    13% |####                            | 174kB 2.1MB/s eta 0:00:01[K    14% |####                            | 184kB 2.2MB/s eta 0:00:01[K    15% |####                            | 194kB 2.2MB/s eta 0:00:01[K    16% |#####                           | 204kB 2.2MB/s eta 0:00:01[K    17% |#####                           | 215kB 2.2MB/s eta 0:00:01[K    17% |#####                           | 225kB 2.5MB/s eta 0:00:01[K    18% |######                          | 235kB 2.5MB/s eta 0:00:01[K    19% |######                          | 245kB 2.5MB/s eta 0:00:01[K    20% |######                          | 256kB 2.5MB/s eta 0:00:01[K    21% |######                          | 266kB 2.9MB/s eta 0:00:01[K    22% |#######                         | 276kB 2.9MB/s eta 0:00:01[K    22% |#######                         | 286kB 3.0MB/s eta 0:00:01[K    23% |#######                         | 296kB 2.8MB/s eta 0:00:01[K    24% |#######                         | 307kB 2.8MB/s eta 0:00:01[K    25% |########                        | 317kB 2.9MB/s eta 0:00:01[K    26% |########                        | 327kB 2.8MB/s eta 0:00:01[K    26% |########                        | 337kB 2.8MB/s eta 0:00:01[K    27% |########                        | 348kB 2.8MB/s eta 0:00:01[K    28% |#########                       | 358kB 2.8MB/s eta 0:00:01[K    29% |#########                       | 368kB 2.9MB/s eta 0:00:01[K    30% |#########                       | 378kB 2.8MB/s eta 0:00:01[K    31% |#########                       | 389kB 2.8MB/s eta 0:00:01[K    31% |##########                      | 399kB 2.9MB/s eta 0:00:01[K    32% |##########                      | 409kB 2.9MB/s eta 0:00:01[K    33% |##########                      | 419kB 2.9MB/s eta 0:00:01[K    34% |##########                      | 430kB 3.0MB/s eta 0:00:01[K    35% |###########                     | 440kB 3.0MB/s eta 0:00:01[K    35% |###########                     | 450kB 3.0MB/s eta 0:00:01[K    36% |###########                     | 460kB 2.9MB/s eta 0:00:01[K    37% |############                    | 471kB 2.9MB/s eta 0:00:01[K    38% |############                    | 481kB 2.9MB/s eta 0:00:01[K    39% |############                    | 491kB 2.9MB/s eta 0:00:01[K    39% |############                    | 501kB 2.9MB/s eta 0:00:01[K    40% |#############                   | 512kB 2.9MB/s eta 0:00:01[K    41% |#############                   | 522kB 2.9MB/s eta 0:00:01[K    42% |#############                   | 532kB 2.9MB/s eta 0:00:01[K    43% |#############                   | 542kB 2.9MB/s eta 0:00:01[K    44% |##############                  | 552kB 2.9MB/s eta 0:00:01[K    44% |##############                  | 563kB 3.0MB/s eta 0:00:01[K    45% |##############                  | 573kB 2.9MB/s eta 0:00:01[K    46% |##############                  | 583kB 2.9MB/s eta 0:00:01[K    47% |###############                 | 593kB 2.9MB/s eta 0:00:01[K    48% |###############                 | 604kB 2.9MB/s eta 0:00:01[K    48% |###############                 | 614kB 2.9MB/s eta 0:00:01[K    49% |###############                 | 624kB 2.9MB/s eta 0:00:01[K    50% |################                | 634kB 2.9MB/s eta 0:00:01[K    51% |################                | 645kB 2.9MB/s eta 0:00:01[K    52% |################                | 655kB 2.9MB/s eta 0:00:01[K    53% |################                | 665kB 2.9MB/s eta 0:00:01[K    53% |#################               | 675kB 2.9MB/s eta 0:00:01[K    54% |#################               | 686kB 2.9MB/s eta 0:00:01[K    55% |#################               | 696kB 2.9MB/s eta 0:00:01[K    56% |##################              | 706kB 2.9MB/s eta 0:00:01[K    57% |##################              | 716kB 2.9MB/s eta 0:00:01[K    57% |##################              | 727kB 2.9MB/s eta 0:00:01[K    58% |##################              | 737kB 2.9MB/s eta 0:00:01[K    59% |###################             | 747kB 2.9MB/s eta 0:00:01[K    60% |###################             | 757kB 2.7MB/s eta 0:00:01[K    61% |###################             | 768kB 2.7MB/s eta 0:00:01[K    62% |###################             | 778kB 2.7MB/s eta 0:00:01[K    62% |####################            | 788kB 2.6MB/s eta 0:00:01[K    63% |####################            | 798kB 2.6MB/s eta 0:00:01[K    64% |####################            | 808kB 2.7MB/s eta 0:00:01[K    65% |####################            | 819kB 2.6MB/s eta 0:00:01[K    66% |#####################           | 829kB 2.6MB/s eta 0:00:01[K    66% |#####################           | 839kB 2.7MB/s eta 0:00:01[K    67% |#####################           | 849kB 2.7MB/s eta 0:00:01[K    68% |#####################           | 860kB 2.9MB/s eta 0:00:01[K    69% |######################          | 870kB 2.9MB/s eta 0:00:01[K    70% |######################          | 880kB 2.9MB/s eta 0:00:01[K    70% |######################          | 890kB 2.9MB/s eta 0:00:01[K    71% |######################          | 901kB 2.9MB/s eta 0:00:01[K    72% |#######################         | 911kB 2.9MB/s eta 0:00:01[K    73% |#######################         | 921kB 2.9MB/s eta 0:00:01[K    74% |#######################         | 931kB 2.9MB/s eta 0:00:01[K    75% |########################        | 942kB 2.9MB/s eta 0:00:01[K    75% |########################        | 952kB 2.9MB/s eta 0:00:01[K    76% |########################        | 962kB 3.0MB/s eta 0:00:01[K    77% |########################        | 972kB 2.9MB/s eta 0:00:01[K    78% |#########################       | 983kB 2.9MB/s eta 0:00:01[K    79% |#########################       | 993kB 2.9MB/s eta 0:00:01[K    79% |#########################       | 1.0MB 2.9MB/s eta 0:00:01[K    80% |#########################       | 1.0MB 2.9MB/s eta 0:00:01[K    81% |##########################      | 1.0MB 2.9MB/s eta 0:00:01[K    82% |##########################      | 1.0MB 2.9MB/s eta 0:00:01[K    83% |##########################      | 1.0MB 2.9MB/s eta 0:00:01[K    84% |##########################      | 1.1MB 2.9MB/s eta 0:00:01[K    84% |###########################     | 1.1MB 2.9MB/s eta 0:00:01[K    85% |###########################     | 1.1MB 3.0MB/s eta 0:00:01[K    86% |###########################     | 1.1MB 3.0MB/s eta 0:00:01[K    87% |###########################     | 1.1MB 2.9MB/s eta 0:00:01[K    88% |############################    | 1.1MB 2.9MB/s eta 0:00:01[K    88% |############################    | 1.1MB 2.9MB/s eta 0:00:01[K    89% |############################    | 1.1MB 341kB/s eta 0:00:01[K    90% |############################    | 1.1MB 341kB/s eta 0:00:01[K    91% |#############################   | 1.1MB 341kB/s eta 0:00:01[K    92% |#############################   | 1.2MB 341kB/s eta 0:00:01[K    93% |#############################   | 1.2MB 342kB/s eta 0:00:01[K    93% |##############################  | 1.2MB 342kB/s eta 0:00:01[K    94% |##############################  | 1.2MB 342kB/s eta 0:00:01[K    95% |##############################  | 1.2MB 342kB/s eta 0:00:01[K    96% |##############################  | 1.2MB 343kB/s eta 0:00:01[K    97% |############################### | 1.2MB 343kB/s eta 0:00:01[K    97% |############################### | 1.2MB 3.0MB/s eta 0:00:01[K    98% |############################### | 1.2MB 3.0MB/s eta 0:00:01[K    99% |############################### | 1.2MB 3.0MB/s eta 0:00:01[K    100% |################################| 1.3MB 80kB/s 
+[?25hCollecting setuptools
+  Downloading setuptools-34.3.3-py2.py3-none-any.whl (389kB)
+[?25l[K    2% |                                | 10kB 2.8MB/s eta 0:00:01[K    5% |#                               | 20kB 2.5MB/s eta 0:00:01[K    7% |##                              | 30kB 2.5MB/s eta 0:00:01[K    10% |###                             | 40kB 2.6MB/s eta 0:00:01[K    13% |####                            | 51kB 2.6MB/s eta 0:00:01[K    15% |#####                           | 61kB 2.7MB/s eta 0:00:01[K    18% |#####                           | 71kB 2.7MB/s eta 0:00:01[K    21% |######                          | 81kB 2.7MB/s eta 0:00:01[K    23% |#######                         | 92kB 2.8MB/s eta 0:00:01[K    26% |########                        | 102kB 2.8MB/s eta 0:00:01[K    28% |#########                       | 112kB 2.8MB/s eta 0:00:01[K    31% |##########                      | 122kB 2.9MB/s eta 0:00:01[K    34% |##########                      | 133kB 2.9MB/s eta 0:00:01[K    36% |###########                     | 143kB 2.9MB/s eta 0:00:01[K    39% |############                    | 153kB 3.0MB/s eta 0:00:01[K    42% |#############                   | 163kB 2.9MB/s eta 0:00:01[K    44% |##############                  | 174kB 2.9MB/s eta 0:00:01[K    47% |###############                 | 184kB 3.0MB/s eta 0:00:01[K    49% |###############                 | 194kB 2.9MB/s eta 0:00:01[K    52% |################                | 204kB 2.9MB/s eta 0:00:01[K    55% |#################               | 215kB 2.9MB/s eta 0:00:01[K    57% |##################              | 225kB 2.9MB/s eta 0:00:01[K    60% |###################             | 235kB 2.9MB/s eta 0:00:01[K    63% |####################            | 245kB 2.9MB/s eta 0:00:01[K    65% |#####################           | 256kB 2.9MB/s eta 0:00:01[K    68% |#####################           | 266kB 3.0MB/s eta 0:00:01[K    71% |######################          | 276kB 2.9MB/s eta 0:00:01[K    73% |#######################         | 286kB 2.9MB/s eta 0:00:01[K    76% |########################        | 296kB 2.9MB/s eta 0:00:01[K    78% |#########################       | 307kB 2.9MB/s eta 0:00:01[K    81% |##########################      | 317kB 2.9MB/s eta 0:00:01[K    84% |##########################      | 327kB 2.9MB/s eta 0:00:01[K    86% |###########################     | 337kB 3.0MB/s eta 0:00:01[K    89% |############################    | 348kB 3.0MB/s eta 0:00:01[K    92% |#############################   | 358kB 3.0MB/s eta 0:00:01[K    94% |##############################  | 368kB 2.9MB/s eta 0:00:01[K    97% |############################### | 378kB 3.0MB/s eta 0:00:01[K    99% |############################### | 389kB 3.0MB/s eta 0:00:01[K    100% |################################| 399kB 248kB/s 
+[?25hCollecting wheel
+  Downloading wheel-0.29.0-py2.py3-none-any.whl (66kB)
+[?25l[K    15% |####                            | 10kB 2.8MB/s eta 0:00:01[K    30% |#########                       | 20kB 2.6MB/s eta 0:00:01[K    45% |##############                  | 30kB 2.5MB/s eta 0:00:01[K    61% |###################             | 40kB 2.7MB/s eta 0:00:01[K    76% |########################        | 51kB 2.7MB/s eta 0:00:01[K    91% |#############################   | 61kB 2.8MB/s eta 0:00:01[K    100% |################################| 71kB 699kB/s 
+[?25hCollecting appdirs>=1.4.0 (from setuptools)
+  Downloading appdirs-1.4.3-py2.py3-none-any.whl
+Collecting packaging>=16.8 (from setuptools)
+  Downloading packaging-16.8-py2.py3-none-any.whl
+Collecting six>=1.6.0 (from setuptools)
+  Downloading six-1.10.0-py2.py3-none-any.whl
+Collecting pyparsing (from packaging>=16.8->setuptools)
+  Downloading pyparsing-2.2.0-py2.py3-none-any.whl (56kB)
+[?25l[K    18% |#####                           | 10kB 4.3MB/s eta 0:00:01[K    36% |###########                     | 20kB 3.3MB/s eta 0:00:01[K    54% |#################               | 30kB 3.3MB/s eta 0:00:01[K    72% |#######################         | 40kB 3.2MB/s eta 0:00:01[K    90% |#############################   | 51kB 3.2MB/s eta 0:00:01[K    100% |################################| 61kB 699kB/s 
+[?25hInstalling collected packages: pip, appdirs, pyparsing, six, packaging, setuptools, wheel
+Successfully installed appdirs-1.4.3 packaging-16.8 pip-9.0.1 pyparsing-2.2.0 setuptools-34.3.3 six-1.10.0 wheel-0.29.0
+root@edison:~# clear
+[H[Jroot@edison:~# wget --no-check-certificate https://bootstrap.pypa.io/ez_setup.py [Aroot@edison:~# wget --no-check-certificate https://bootstrap.pypa.io/ez_setup.p[Ky
+--2017-04-02 01:44:09--  https://bootstrap.pypa.io/ez_setup.py
+Resolving bootstrap.pypa.io... 151.101.56.175
+Connecting to bootstrap.pypa.io|151.101.56.175|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 12537 (12K) [text/x-python]
+Saving to: 'ez_setup.py'
+
+ 0% [                                       ] 0           --.-K/s              100%[======================================>] 12,537      --.-K/s   in 0.003s  
+
+2017-04-02 01:44:09 (3.55 MB/s) - 'ez_setup.py' saved [12537/12537]
+
+root@edison:~# python ez_setup.py --insecure
+ez_setup.py is deprecated and when using it setuptools will be pinned to 33.1.1 since it's the last version that supports setuptools self upgrade/installation, check https://github.com/pypa/setuptools/issues/581 for more info; use pip to install setuptools
+Downloading https://pypi.io/packages/source/s/setuptools/setuptools-33.1.1.zip
+Traceback (most recent call last):
+  File "/home/root/Python-3.6.0/Lib/urllib/request.py", line 1318, in do_open
+    encode_chunked=req.has_header('Transfer-encoding'))
+  File "/home/root/Python-3.6.0/Lib/http/client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/home/root/Python-3.6.0/Lib/http/client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/home/root/Python-3.6.0/Lib/http/client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/home/root/Python-3.6.0/Lib/http/client.py", line 1026, in _send_output
+    self.send(msg)
+  File "/home/root/Python-3.6.0/Lib/http/client.py", line 964, in send
+    self.connect()
+  File "/home/root/Python-3.6.0/Lib/http/client.py", line 1400, in connect
+    server_hostname=server_hostname)
+  File "/home/root/Python-3.6.0/Lib/ssl.py", line 401, in wrap_socket
+    _context=self, _session=session)
+  File "/home/root/Python-3.6.0/Lib/ssl.py", line 808, in __init__
+    self.do_handshake()
+  File "/home/root/Python-3.6.0/Lib/ssl.py", line 1061, in do_handshake
+    self._sslobj.do_handshake()
+  File "/home/root/Python-3.6.0/Lib/ssl.py", line 683, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:749)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "ez_setup.py", line 414, in <module>
+    sys.exit(main())
+  File "ez_setup.py", line 410, in main
+    archive = download_setuptools(**_download_args(options))
+  File "ez_setup.py", line 355, in download_setuptools
+    downloader(url, saveto)
+  File "ez_setup.py", line 307, in download_file_insecure
+    src = urlopen(url)
+  File "/home/root/Python-3.6.0/Lib/urllib/request.py", line 223, in urlopen
+    return opener.open(url, data, timeout)
+  File "/home/root/Python-3.6.0/Lib/urllib/request.py", line 526, in open
+    response = self._open(req, data)
+  File "/home/root/Python-3.6.0/Lib/urllib/request.py", line 544, in _open
+    '_open', req)
+  File "/home/root/Python-3.6.0/Lib/urllib/request.py", line 504, in _call_chain
+    result = func(*args)
+  File "/home/root/Python-3.6.0/Lib/urllib/request.py", line 1361, in https_open
+    context=self._context, check_hostname=self._check_hostname)
+  File "/home/root/Python-3.6.0/Lib/urllib/request.py", line 1320, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:749)>
+root@edison:~# python ez_setup.py --insecure[4h [4ls[4h [4lu[4h [4ld[4h [4lo[4h [4l 
+ez_setup.py is deprecated and when using it setuptools will be pinned to 33.1.1 since it's the last version that supports setuptools self upgrade/installation, check https://github.com/pypa/setuptools/issues/581 for more info; use pip to install setuptools
+Downloading https://pypi.io/packages/source/s/setuptools/setuptools-33.1.1.zip
+Traceback (most recent call last):
+  File "/home/root/Python-3.6.0/Lib/urllib/request.py", line 1318, in do_open
+    encode_chunked=req.has_header('Transfer-encoding'))
+  File "/home/root/Python-3.6.0/Lib/http/client.py", line 1239, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/home/root/Python-3.6.0/Lib/http/client.py", line 1285, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/home/root/Python-3.6.0/Lib/http/client.py", line 1234, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/home/root/Python-3.6.0/Lib/http/client.py", line 1026, in _send_output
+    self.send(msg)
+  File "/home/root/Python-3.6.0/Lib/http/client.py", line 964, in send
+    self.connect()
+  File "/home/root/Python-3.6.0/Lib/http/client.py", line 1400, in connect
+    server_hostname=server_hostname)
+  File "/home/root/Python-3.6.0/Lib/ssl.py", line 401, in wrap_socket
+    _context=self, _session=session)
+  File "/home/root/Python-3.6.0/Lib/ssl.py", line 808, in __init__
+    self.do_handshake()
+  File "/home/root/Python-3.6.0/Lib/ssl.py", line 1061, in do_handshake
+    self._sslobj.do_handshake()
+  File "/home/root/Python-3.6.0/Lib/ssl.py", line 683, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:749)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "ez_setup.py", line 414, in <module>
+    sys.exit(main())
+  File "ez_setup.py", line 410, in main
+    archive = download_setuptools(**_download_args(options))
+  File "ez_setup.py", line 355, in download_setuptools
+    downloader(url, saveto)
+  File "ez_setup.py", line 307, in download_file_insecure
+    src = urlopen(url)
+  File "/home/root/Python-3.6.0/Lib/urllib/request.py", line 223, in urlopen
+    return opener.open(url, data, timeout)
+  File "/home/root/Python-3.6.0/Lib/urllib/request.py", line 526, in open
+    response = self._open(req, data)
+  File "/home/root/Python-3.6.0/Lib/urllib/request.py", line 544, in _open
+    '_open', req)
+  File "/home/root/Python-3.6.0/Lib/urllib/request.py", line 504, in _call_chain
+    result = func(*args)
+  File "/home/root/Python-3.6.0/Lib/urllib/request.py", line 1361, in https_open
+    context=self._context, check_hostname=self._check_hostname)
+  File "/home/root/Python-3.6.0/Lib/urllib/request.py", line 1320, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:749)>
+root@edison:~# clear
+[H[Jroot@edison:~# pip-V
+-sh: pip-V: command not found
+root@edison:~# pip3 -V
+-sh: /usr/local/bin/pip3: /usr/local/bin/python3.6: bad interpreter: No such file or directory
+root@edison:~# pip
+-sh: /usr/local/bin/pip: /usr/local/bin/python3.6: bad interpreter: No such file or directory
+root@edison:~# ls
+Python-3.6.0  ez_setup.py  get-pip.py  hi.txt  readme  test.py
+root@edison:~# python
+Python 3.6.0 (default, Apr  2 2017, 01:30:54) 
+[GCC 4.9.1] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> pip3 -V
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'pip3' is not defined
+>>> pip -V
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'pip' is not defined
+>>> pip
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'pip' is not defined
+>>> clear
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'clear' is not defined
+>>> exit()
+root@edison:~# clear
+[H[Jroot@edison:~# opkg update
+Downloading http://iotdk.intel.com/repos/3.5/intelgalactic/opkg/i586//Packages.
+Updated list of available packages in /var/lib/opkg/iotkit.
+Downloading http://iotdk.intel.com/repos/3.5/iotdk/edison/all/Packages.
+Updated list of available packages in /var/lib/opkg/iotdk-all.
+Downloading http://iotdk.intel.com/repos/3.5/iotdk/edison/core2-32/Packages.
+Updated list of available packages in /var/lib/opkg/iotdk-core2-32.
+Downloading http://iotdk.intel.com/repos/3.5/iotdk/edison/edison/Packages.
+Updated list of available packages in /var/lib/opkg/iotdk-edison.
+root@edison:~# clear
+[H[Jroot@edison:~# pip
+-sh: /usr/local/bin/pip: /usr/local/bin/python3.6: bad interpreter: No such file or directory
+root@edison:~# python get-pip.py
+Requirement already up-to-date: pip in /usr/local/lib/python3.6/site-packages
+root@edison:~# pip
+-sh: /usr/local/bin/pip: /usr/local/bin/python3.6: bad interpreter: No such file or directory
+root@edison:~# python ez_setup.py --insecure          
+ez_setup.py is deprecated and when using it setuptools will be pinned to 33.1.1 since it's the last version that supports setuptools self upgrade/installation, check https://github.com/pypa/setuptools/issues/581 for more info; use pip to install setuptools
+Downloading https://pypi.io/packages/source/s/setuptools/setuptools-33.1.1.zip
+Extracting in /tmp/tmpgxns3gjj
+Now working in /tmp/tmpgxns3gjj/setuptools-33.1.1
+Installing Setuptools
+running install
+running bdist_egg
+running egg_info
+writing setuptools.egg-info/PKG-INFO
+writing dependency_links to setuptools.egg-info/dependency_links.txt
+writing entry points to setuptools.egg-info/entry_points.txt
+writing requirements to setuptools.egg-info/requires.txt
+writing top-level names to setuptools.egg-info/top_level.txt
+reading manifest file 'setuptools.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no files found matching '*' under directory 'setuptools/_vendor'
+writing manifest file 'setuptools.egg-info/SOURCES.txt'
+installing library code to build/bdist.linux-i686/egg
+running install_lib
+running build_py
+creating build
+creating build/lib
+copying easy_install.py -> build/lib
+creating build/lib/setuptools
+copying setuptools/windows_support.py -> build/lib/setuptools
+copying setuptools/version.py -> build/lib/setuptools
+copying setuptools/unicode_utils.py -> build/lib/setuptools
+copying setuptools/ssl_support.py -> build/lib/setuptools
+copying setuptools/site-patch.py -> build/lib/setuptools
+copying setuptools/sandbox.py -> build/lib/setuptools
+copying setuptools/py36compat.py -> build/lib/setuptools
+copying setuptools/py33compat.py -> build/lib/setuptools
+copying setuptools/py31compat.py -> build/lib/setuptools
+copying setuptools/py27compat.py -> build/lib/setuptools
+copying setuptools/py26compat.py -> build/lib/setuptools
+copying setuptools/package_index.py -> build/lib/setuptools
+copying setuptools/namespaces.py -> build/lib/setuptools
+copying setuptools/msvc.py -> build/lib/setuptools
+copying setuptools/monkey.py -> build/lib/setuptools
+copying setuptools/lib2to3_ex.py -> build/lib/setuptools
+copying setuptools/launch.py -> build/lib/setuptools
+copying setuptools/glob.py -> build/lib/setuptools
+copying setuptools/extension.py -> build/lib/setuptools
+copying setuptools/dist.py -> build/lib/setuptools
+copying setuptools/depends.py -> build/lib/setuptools
+copying setuptools/config.py -> build/lib/setuptools
+copying setuptools/archive_util.py -> build/lib/setuptools
+copying setuptools/__init__.py -> build/lib/setuptools
+creating build/lib/pkg_resources
+copying pkg_resources/__init__.py -> build/lib/pkg_resources
+creating build/lib/setuptools/extern
+copying setuptools/extern/__init__.py -> build/lib/setuptools/extern
+creating build/lib/setuptools/command
+copying setuptools/command/upload_docs.py -> build/lib/setuptools/command
+copying setuptools/command/upload.py -> build/lib/setuptools/command
+copying setuptools/command/test.py -> build/lib/setuptools/command
+copying setuptools/command/setopt.py -> build/lib/setuptools/command
+copying setuptools/command/sdist.py -> build/lib/setuptools/command
+copying setuptools/command/saveopts.py -> build/lib/setuptools/command
+copying setuptools/command/rotate.py -> build/lib/setuptools/command
+copying setuptools/command/register.py -> build/lib/setuptools/command
+copying setuptools/command/py36compat.py -> build/lib/setuptools/command
+copying setuptools/command/install_scripts.py -> build/lib/setuptools/command
+copying setuptools/command/install_lib.py -> build/lib/setuptools/command
+copying setuptools/command/install_egg_info.py -> build/lib/setuptools/command
+copying setuptools/command/install.py -> build/lib/setuptools/command
+copying setuptools/command/egg_info.py -> build/lib/setuptools/command
+copying setuptools/command/easy_install.py -> build/lib/setuptools/command
+copying setuptools/command/develop.py -> build/lib/setuptools/command
+copying setuptools/command/build_py.py -> build/lib/setuptools/command
+copying setuptools/command/build_ext.py -> build/lib/setuptools/command
+copying setuptools/command/bdist_wininst.py -> build/lib/setuptools/command
+copying setuptools/command/bdist_rpm.py -> build/lib/setuptools/command
+copying setuptools/command/bdist_egg.py -> build/lib/setuptools/command
+copying setuptools/command/alias.py -> build/lib/setuptools/command
+copying setuptools/command/__init__.py -> build/lib/setuptools/command
+creating build/lib/pkg_resources/extern
+copying pkg_resources/extern/__init__.py -> build/lib/pkg_resources/extern
+creating build/lib/pkg_resources/_vendor
+copying pkg_resources/_vendor/six.py -> build/lib/pkg_resources/_vendor
+copying pkg_resources/_vendor/pyparsing.py -> build/lib/pkg_resources/_vendor
+copying pkg_resources/_vendor/appdirs.py -> build/lib/pkg_resources/_vendor
+copying pkg_resources/_vendor/__init__.py -> build/lib/pkg_resources/_vendor
+creating build/lib/pkg_resources/_vendor/packaging
+copying pkg_resources/_vendor/packaging/version.py -> build/lib/pkg_resources/_vendor/packaging
+copying pkg_resources/_vendor/packaging/utils.py -> build/lib/pkg_resources/_vendor/packaging
+copying pkg_resources/_vendor/packaging/specifiers.py -> build/lib/pkg_resources/_vendor/packaging
+copying pkg_resources/_vendor/packaging/requirements.py -> build/lib/pkg_resources/_vendor/packaging
+copying pkg_resources/_vendor/packaging/markers.py -> build/lib/pkg_resources/_vendor/packaging
+copying pkg_resources/_vendor/packaging/_structures.py -> build/lib/pkg_resources/_vendor/packaging
+copying pkg_resources/_vendor/packaging/_compat.py -> build/lib/pkg_resources/_vendor/packaging
+copying pkg_resources/_vendor/packaging/__init__.py -> build/lib/pkg_resources/_vendor/packaging
+copying pkg_resources/_vendor/packaging/__about__.py -> build/lib/pkg_resources/_vendor/packaging
+copying setuptools/script (dev).tmpl -> build/lib/setuptools
+copying setuptools/script.tmpl -> build/lib/setuptools
+copying setuptools/gui.exe -> build/lib/setuptools
+copying setuptools/gui-64.exe -> build/lib/setuptools
+copying setuptools/gui-32.exe -> build/lib/setuptools
+copying setuptools/cli.exe -> build/lib/setuptools
+copying setuptools/cli-64.exe -> build/lib/setuptools
+copying setuptools/cli-32.exe -> build/lib/setuptools
+copying setuptools/command/launcher manifest.xml -> build/lib/setuptools/command
+creating build/bdist.linux-i686
+creating build/bdist.linux-i686/egg
+creating build/bdist.linux-i686/egg/pkg_resources
+creating build/bdist.linux-i686/egg/pkg_resources/_vendor
+creating build/bdist.linux-i686/egg/pkg_resources/_vendor/packaging
+copying build/lib/pkg_resources/_vendor/packaging/__about__.py -> build/bdist.linux-i686/egg/pkg_resources/_vendor/packaging
+copying build/lib/pkg_resources/_vendor/packaging/__init__.py -> build/bdist.linux-i686/egg/pkg_resources/_vendor/packaging
+copying build/lib/pkg_resources/_vendor/packaging/_compat.py -> build/bdist.linux-i686/egg/pkg_resources/_vendor/packaging
+copying build/lib/pkg_resources/_vendor/packaging/_structures.py -> build/bdist.linux-i686/egg/pkg_resources/_vendor/packaging
+copying build/lib/pkg_resources/_vendor/packaging/markers.py -> build/bdist.linux-i686/egg/pkg_resources/_vendor/packaging
+copying build/lib/pkg_resources/_vendor/packaging/requirements.py -> build/bdist.linux-i686/egg/pkg_resources/_vendor/packaging
+copying build/lib/pkg_resources/_vendor/packaging/specifiers.py -> build/bdist.linux-i686/egg/pkg_resources/_vendor/packaging
+copying build/lib/pkg_resources/_vendor/packaging/utils.py -> build/bdist.linux-i686/egg/pkg_resources/_vendor/packaging
+copying build/lib/pkg_resources/_vendor/packaging/version.py -> build/bdist.linux-i686/egg/pkg_resources/_vendor/packaging
+copying build/lib/pkg_resources/_vendor/__init__.py -> build/bdist.linux-i686/egg/pkg_resources/_vendor
+copying build/lib/pkg_resources/_vendor/appdirs.py -> build/bdist.linux-i686/egg/pkg_resources/_vendor
+copying build/lib/pkg_resources/_vendor/pyparsing.py -> build/bdist.linux-i686/egg/pkg_resources/_vendor
+copying build/lib/pkg_resources/_vendor/six.py -> build/bdist.linux-i686/egg/pkg_resources/_vendor
+creating build/bdist.linux-i686/egg/pkg_resources/extern
+copying build/lib/pkg_resources/extern/__init__.py -> build/bdist.linux-i686/egg/pkg_resources/extern
+copying build/lib/pkg_resources/__init__.py -> build/bdist.linux-i686/egg/pkg_resources
+creating build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/cli-32.exe -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/cli-64.exe -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/cli.exe -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/gui-32.exe -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/gui-64.exe -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/gui.exe -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/script.tmpl -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/script (dev).tmpl -> build/bdist.linux-i686/egg/setuptools
+creating build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/launcher manifest.xml -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/__init__.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/alias.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/bdist_egg.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/bdist_rpm.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/bdist_wininst.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/build_ext.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/build_py.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/develop.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/easy_install.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/egg_info.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/install.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/install_egg_info.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/install_lib.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/install_scripts.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/py36compat.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/register.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/rotate.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/saveopts.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/sdist.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/setopt.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/test.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/upload.py -> build/bdist.linux-i686/egg/setuptools/command
+copying build/lib/setuptools/command/upload_docs.py -> build/bdist.linux-i686/egg/setuptools/command
+creating build/bdist.linux-i686/egg/setuptools/extern
+copying build/lib/setuptools/extern/__init__.py -> build/bdist.linux-i686/egg/setuptools/extern
+copying build/lib/setuptools/__init__.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/archive_util.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/config.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/depends.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/dist.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/extension.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/glob.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/launch.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/lib2to3_ex.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/monkey.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/msvc.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/namespaces.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/package_index.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/py26compat.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/py27compat.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/py31compat.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/py33compat.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/py36compat.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/sandbox.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/site-patch.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/ssl_support.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/unicode_utils.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/version.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/setuptools/windows_support.py -> build/bdist.linux-i686/egg/setuptools
+copying build/lib/easy_install.py -> build/bdist.linux-i686/egg
+byte-compiling build/bdist.linux-i686/egg/pkg_resources/_vendor/packaging/__about__.py to __about__.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/pkg_resources/_vendor/packaging/__init__.py to __init__.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/pkg_resources/_vendor/packaging/_compat.py to _compat.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/pkg_resources/_vendor/packaging/_structures.py to _structures.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/pkg_resources/_vendor/packaging/markers.py to markers.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/pkg_resources/_vendor/packaging/requirements.py to requirements.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/pkg_resources/_vendor/packaging/specifiers.py to specifiers.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/pkg_resources/_vendor/packaging/utils.py to utils.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/pkg_resources/_vendor/packaging/version.py to version.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/pkg_resources/_vendor/__init__.py to __init__.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/pkg_resources/_vendor/appdirs.py to appdirs.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/pkg_resources/_vendor/pyparsing.py to pyparsing.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/pkg_resources/_vendor/six.py to six.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/pkg_resources/extern/__init__.py to __init__.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/pkg_resources/__init__.py to __init__.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/__init__.py to __init__.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/alias.py to alias.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/bdist_egg.py to bdist_egg.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/bdist_rpm.py to bdist_rpm.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/bdist_wininst.py to bdist_wininst.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/build_ext.py to build_ext.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/build_py.py to build_py.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/develop.py to develop.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/easy_install.py to easy_install.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/egg_info.py to egg_info.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/install.py to install.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/install_egg_info.py to install_egg_info.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/install_lib.py to install_lib.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/install_scripts.py to install_scripts.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/py36compat.py to py36compat.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/register.py to register.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/rotate.py to rotate.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/saveopts.py to saveopts.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/sdist.py to sdist.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/setopt.py to setopt.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/test.py to test.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/upload.py to upload.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/command/upload_docs.py to upload_docs.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/extern/__init__.py to __init__.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/__init__.py to __init__.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/archive_util.py to archive_util.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/config.py to config.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/depends.py to depends.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/dist.py to dist.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/extension.py to extension.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/glob.py to glob.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/launch.py to launch.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/lib2to3_ex.py to lib2to3_ex.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/monkey.py to monkey.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/msvc.py to msvc.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/namespaces.py to namespaces.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/package_index.py to package_index.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/py26compat.py to py26compat.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/py27compat.py to py27compat.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/py31compat.py to py31compat.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/py33compat.py to py33compat.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/py36compat.py to py36compat.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/sandbox.py to sandbox.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/site-patch.py to site-patch.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/ssl_support.py to ssl_support.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/unicode_utils.py to unicode_utils.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/version.py to version.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/setuptools/windows_support.py to windows_support.cpython-36.pyc
+byte-compiling build/bdist.linux-i686/egg/easy_install.py to easy_install.cpython-36.pyc
+creating build/bdist.linux-i686/egg/EGG-INFO
+copying setuptools.egg-info/PKG-INFO -> build/bdist.linux-i686/egg/EGG-INFO
+copying setuptools.egg-info/SOURCES.txt -> build/bdist.linux-i686/egg/EGG-INFO
+copying setuptools.egg-info/dependency_links.txt -> build/bdist.linux-i686/egg/EGG-INFO
+copying setuptools.egg-info/entry_points.txt -> build/bdist.linux-i686/egg/EGG-INFO
+copying setuptools.egg-info/requires.txt -> build/bdist.linux-i686/egg/EGG-INFO
+copying setuptools.egg-info/top_level.txt -> build/bdist.linux-i686/egg/EGG-INFO
+copying setuptools.egg-info/zip-safe -> build/bdist.linux-i686/egg/EGG-INFO
+creating dist
+creating 'dist/setuptools-33.1.1-py3.6.egg' and adding 'build/bdist.linux-i686/egg' to it
+removing 'build/bdist.linux-i686/egg' (and everything under it)
+Processing setuptools-33.1.1-py3.6.egg
+Copying setuptools-33.1.1-py3.6.egg to /usr/local/lib/python3.6/site-packages
+Adding setuptools 33.1.1 to easy-install.pth file
+Installing easy_install script to /usr/local/bin
+Installing easy_install-3.6 script to /usr/local/bin
+
+Installed /usr/local/lib/python3.6/site-packages/setuptools-33.1.1-py3.6.egg
+Processing dependencies for setuptools==33.1.1
+Finished processing dependencies for setuptools==33.1.1
+root@edison:~# pip
+-sh: /usr/local/bin/pip: /usr/local/bin/python3.6: bad interpreter: No such file or directory
+root@edison:~# pip3
+-sh: /usr/local/bin/pip3: /usr/local/bin/python3.6: bad interpreter: No such file or directory
+root@edison:~# clear
+[H[Jroot@edison:~# su  apt
+-sh: apt: command not found
+root@edison:~# cd ..
+root@edison:/home# pip
+-sh: /usr/local/bin/pip: /usr/local/bin/python3.6: bad interpreter: No such file or directory
+root@edison:/home# pip3
+-sh: /usr/local/bin/pip3: /usr/local/bin/python3.6: bad interpreter: No such file or directory
+root@edison:/home# python3
+-sh: python3: command not found
+root@edison:/home# python -helo p
+Unknown option: -e
+usage: python [option] ... [-c cmd | -m mod | file | -] [arg] ...
+Try `python -h' for more information.
+root@edison:/home# python -h
+usage: python [option] ... [-c cmd | -m mod | file | -] [arg] ...
+Options and arguments (and corresponding environment variables):
+-b     : issue warnings about str(bytes_instance), str(bytearray_instance)
+         and comparing bytes/bytearray with str. (-bb: issue errors)
+-B     : don't write .py[co] files on import; also PYTHONDONTWRITEBYTECODE=x
+-c cmd : program passed in as string (terminates option list)
+-d     : debug output from parser; also PYTHONDEBUG=x
+-E     : ignore PYTHON* environment variables (such as PYTHONPATH)
+-h     : print this help message and exit (also --help)
+-i     : inspect interactively after running script; forces a prompt even
+         if stdin does not appear to be a terminal; also PYTHONINSPECT=x
+-I     : isolate Python from the user's environment (implies -E and -s)
+-m mod : run library module as a script (terminates option list)
+-O     : optimize generated bytecode slightly; also PYTHONOPTIMIZE=x
+-OO    : remove doc-strings in addition to the -O optimizations
+-q     : don't print version and copyright messages on interactive startup
+-s     : don't add user site directory to sys.path; also PYTHONNOUSERSITE
+-S     : don't imply 'import site' on initialization
+-u     : unbuffered binary stdout and stderr, stdin always buffered;
+         also PYTHONUNBUFFERED=x
+         see man page for details on internal buffering relating to '-u'
+-v     : verbose (trace import statements); also PYTHONVERBOSE=x
+         can be supplied multiple times to increase verbosity
+-V     : print the Python version number and exit (also --version)
+         when given twice, print more information about the build
+-W arg : warning control; arg is action:message:category:module:lineno
+         also PYTHONWARNINGS=arg
+-x     : skip first line of source, allowing use of non-Unix forms of #!cmd
+-X opt : set implementation-specific option
+file   : program read from script file
+-      : program read from stdin (default; interactive mode if a tty)
+arg ...: arguments passed to program in sys.argv[1:]
+
+Other environment variables:
+PYTHONSTARTUP: file executed on interactive startup (no default)
+PYTHONPATH   : ':'-separated list of directories prefixed to the
+               default module search path.  The result is sys.path.
+PYTHONHOME   : alternate <prefix> directory (or <prefix>:<exec_prefix>).
+               The default module search path uses <prefix>/pythonX.X.
+PYTHONCASEOK : ignore case in 'import' statements (Windows).
+PYTHONIOENCODING: Encoding[:errors] used for stdin/stdout/stderr.
+PYTHONFAULTHANDLER: dump the Python traceback on fatal errors.
+PYTHONHASHSEED: if this variable is set to 'random', a random value is used
+   to seed the hashes of str, bytes and datetime objects.  It can also be
+   set to an integer in the range [0,4294967295] to get hash values with a
+   predictable seed.
+PYTHONMALLOC: set the Python memory allocators and/or install debug hooks
+   on Python memory allocators. Use PYTHONMALLOC=debug to install debug
+   hooks.
+root@edison:/home# python pip
+python: can't open file 'pip': [Errno 2] No such file or directory
+root@edison:/home# python pip3
+python: can't open file 'pip3': [Errno 2] No such file or directory
+root@edison:/home# clear
+[H[Jroot@edison:/home# python
+Python 3.6.0 (default, Apr  2 2017, 01:30:54) 
+[GCC 4.9.1] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> exit()
+root@edison:/home# pip
+-sh: /usr/local/bin/pip: /usr/local/bin/python3.6: bad interpreter: No such file or directory
+root@edison:/home# pip3
+-sh: /usr/local/bin/pip3: /usr/local/bin/python3.6: bad interpreter: No such file or directory
+root@edison:/home# echo "src intel-iotdk http://iotdk.intel.com/repo/1.1/intelga lactic" > /etc/opkg/intel-iotdk.conf
+root@edison:/home# opkg update
+Downloading http://iotdk.intel.com/repo/1.1/intelgalactic/Packages.
+Downloading http://iotdk.intel.com/repos/3.5/intelgalactic/opkg/i586//Packages.
+Updated list of available packages in /var/lib/opkg/iotkit.
+Downloading http://iotdk.intel.com/repos/3.5/iotdk/edison/all/Packages.
+Updated list of available packages in /var/lib/opkg/iotdk-all.
+Downloading http://iotdk.intel.com/repos/3.5/iotdk/edison/core2-32/Packages.
+Updated list of available packages in /var/lib/opkg/iotdk-core2-32.
+Downloading http://iotdk.intel.com/repos/3.5/iotdk/edison/edison/Packages.
+Updated list of available packages in /var/lib/opkg/iotdk-edison.
+Collected errors:
+ * opkg_download: Failed to download http://iotdk.intel.com/repo/1.1/intelgalactic/Packages, wget returned 8.
+root@edison:/home# opkg upgrade
+Upgrading mraa from 1.0.0-r0 to 1.5.1 on root.
+Downloading http://iotdk.intel.com/repos/3.5/intelgalactic/opkg/i586//mraa_1.5.1_i586.ipk.
+Removing package mraa-dev from root...
+Removing package mraa-doc from root...
+Removing obsolete file /usr/lib/libmraa.so.1.0.0.
+Upgrading curl from 7.37.1-r0 to 7.52.1-r0 on root.
+Downloading http://iotdk.intel.com/repos/3.5/iotdk/edison/core2-32/curl_7.52.1-r0_core2-32.ipk.
+Upgrading libcurl5 from 7.37.1-r0 to 7.52.1-r0 on root.
+Downloading http://iotdk.intel.com/repos/3.5/iotdk/edison/core2-32/libcurl5_7.52.1-r0_core2-32.ipk.
+Removing obsolete file /usr/lib/libcurl.so.5.3.0.
+mraa (1.5.1) already installed on root.
+mraa (1.5.1) already installed on root.
+Upgrading upm from 0.7.0-r0 to 1.1.0 on root.
+Downloading http://iotdk.intel.com/repos/3.5/intelgalactic/opkg/i586//upm_1.1.0_i586.ipk.
+Removing package upm-dev from root...
+Removing obsolete file /usr/lib/libupm-waterlevel.so.0.
+Removing obsolete file /usr/lib/libupm-teams.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_grovemoisture.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_mpr121.so.
+Removing obsolete file /usr/lib/libupm-ozw.so.0.
+Removing obsolete file /usr/lib/libupm-groveehr.so.0.
+Removing obsolete file /usr/lib/libupm-adafruitms1438.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-tsl2561.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-xbee.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-adxl345.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_t6713.py.
+Removing obsolete file /usr/lib/libupm-guvas12d.so.0.
+Removing obsolete file /usr/lib/libupm-servo.so.0.
+Removing obsolete file /usr/lib/libupm-loudness.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-ttp223.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-nlgpio16.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_ina132.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_bmp280.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_h803x.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_hmc5883l.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_sx6119.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_max31723.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_th02.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_mpl3115a2.so.
+Removing obsolete file /usr/lib/libupm-bma220.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_max44009.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_adis16448.so.
+Removing obsolete file /usr/lib/libupm-itg3200.so.0.
+Removing obsolete file /usr/lib/libupm-cwlsxxa.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_ads1x15.py.
+Removing obsolete file /usr/lib/libupm-l3gd20.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_gp2y0a.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_guvas12d.py.
+Removing obsolete file /usr/lib/libupm-flex.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_ttp223.py.
+Removing obsolete file /usr/lib/libupm-mlx90614.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_htu21d.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_joystick12.py.
+Removing obsolete file /usr/lib/libupm-adxrs610.so.0.
+Removing obsolete file /usr/lib/libupm-pn532.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_tsl2561.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_grovevdiv.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_grovewater.so.
+Removing obsolete file /usr/lib/libupm-lm35.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-max31723.so.0.
+Removing obsolete file /usr/lib/libupm-max31723.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_apa102.py.
+Removing obsolete file /usr/lib/libupm-isd1820.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_micsv89.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_mlx90614.so.
+Removing obsolete file /usr/lib/libupm-rfr359f.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_pca9685.py.
+Removing obsolete file /usr/lib/libupm-apds9002.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_hlg150h.so.
+Removing obsolete file /usr/lib/libupm-nrf24l01.so.0.
+Removing obsolete file /usr/lib/libupm-uln200xa.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_lpd8806.py.
+Removing obsolete file /usr/lib/libupm-mcp9808.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-grovevdiv.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_rgbringcoder.py.
+Removing obsolete file /usr/lib/libupm-grovemoisture.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_teams.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_rhusb.so.
+Removing obsolete file /usr/lib/libupm-hdxxvxta.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-t6713.so.0.
+Removing obsolete file /usr/lib/libupm-si1132.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-at42qt1070.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_nlgpio16.so.
+Removing obsolete file /usr/lib/libupm-pca9685.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_ppd42ns.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_pn532.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_apds9002.py.
+Removing obsolete file /usr/lib/libupm-am2315.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-bno055.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_kxcjk1013.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_ozw.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_mic.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_mcp9808.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_nunchuck.py.
+Removing obsolete file /usr/lib/libupm-adxl345.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_rotaryencoder.py.
+Removing obsolete file /usr/lib/libupm-interfaces.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-max44009.so.0.
+Removing obsolete file /usr/lib/libupm-maxsonarez.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-loudness.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_rfr359f.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_si114x.py.
+Removing obsolete file /usr/lib/libupm-servo.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-ssd1351.so.0.
+Removing obsolete file /usr/lib/libupm-ad8232.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-hlg150h.so.0.
+Removing obsolete file /usr/lib/libupm-htu21d.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-t3311.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_adafruitms1438.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_interfaces.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_st7735.py.
+Removing obsolete file /usr/lib/libupm-mpr121.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_lsm303.py.
+Removing obsolete file /usr/lib/libupm-rpr220.so.0.
+Removing obsolete file /usr/lib/libupm-apa102.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_mma7660.so.
+Removing obsolete file /usr/lib/libupm-max31855.so.0.
+Removing obsolete file /usr/lib/libupm-si114x.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-ldt0028.so.0.
+Removing obsolete file /usr/lib/libupm-ldt0028.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_loudness.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_sm130.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_max44000.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_groveeldriver.so.
+Removing obsolete file /usr/lib/libupm-grovegprs.so.0.
+Removing obsolete file /usr/lib/libupm-hmc5883l.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-ublox6.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_adxl335.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_ds18b20.so.
+Removing obsolete file /usr/lib/libupm-lsm303.so.0.
+Removing obsolete file /usr/lib/libupm-kxcjk1013.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-groveo2.so.0.
+Removing obsolete file /usr/lib/libupm-grovescam.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_pulsensor.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_l3gd20.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_mma7455.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_otp538u.py.
+Removing obsolete file /usr/lib/libupm-sm130.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_hm11.so.
+Removing obsolete file /usr/lib/libupm-biss0001.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-gp2y0a.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_hx711.so.
+Removing obsolete file /usr/lib/libupm-mic.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_t3311.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_apds9930.so.
+Removing obsolete file /usr/lib/libupm-groveemg.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_groveehr.so.
+Removing obsolete file /usr/lib/libupm-nunchuck.so.0.
+Removing obsolete file /usr/lib/libupm-m24lr64e.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_lol.so.
+Removing obsolete file /usr/lib/libupm-mpl3115a2.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_ds1307.py.
+Removing obsolete file /usr/lib/libupm-mpl3115a2.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-i2clcd.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_adc121c021.py.
+Removing obsolete file /usr/lib/libupm-rgbringcoder.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_maxds3231m.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_ad8232.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_urm37.so.
+Removing obsolete file /usr/lib/libupm-ds1307.so.0.
+Removing obsolete file /usr/lib/libupm-ozw.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-xbee.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_mpu9150.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_ta12200.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_tcs3414cs.so.
+Removing obsolete file /usr/lib/libupm-max44009.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_mg811.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_si7005.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_tex00.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_max31855.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_adafruitss.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_ldt0028.py.
+Removing obsolete file /usr/lib/libupm-wt5001.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-adc121c021.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-joystick12.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_i2clcd.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_sx1276.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_am2315.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_bno055.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_grove.so.
+Removing obsolete file /usr/lib/libupm-ds2413.so.0.
+Removing obsolete file /usr/lib/libupm-apa102.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_ublox6.py.
+Removing obsolete file /usr/lib/libupm-grove.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_vcap.so.
+Removing obsolete file /usr/lib/libupm-rhusb.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_stepmotor.so.
+Removing obsolete file /usr/lib/libupm-l3gd20.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_bmpx8x.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_zfm20.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_bmi160.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_yg1006.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_ili9341.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_enc03r.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_hmtrp.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_mhz16.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_servo.py.
+Removing obsolete file /usr/lib/libupm-lp8860.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-tm1637.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_mq303a.py.
+Removing obsolete file /usr/lib/libupm-sx1276.so.0.
+Removing obsolete file /usr/lib/libupm-bmp280.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_hwxpxx.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_m24lr64e.so.
+Removing obsolete file /usr/lib/libupm-urm37.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_smartdrive.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_uln200xa.py.
+Removing obsolete file /usr/lib/libupm-urm37.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_groveemg.py.
+Removing obsolete file /usr/lib/libupm-grovegprs.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_adxl345.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_rpr220.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_ds2413.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_lsm9ds0.so.
+Removing obsolete file /usr/lib/libupm-grovescam.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_cjq4435.so.
+Removing obsolete file /usr/lib/libupm-pulsensor.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-mg811.so.0.
+Removing obsolete file /usr/lib/libupm-lsm9ds0.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-l298.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_tm1637.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_lp8860.so.
+Removing obsolete file /usr/lib/libupm-mg811.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_hcsr04.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_grovespeaker.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_flex.py.
+Removing obsolete file /usr/lib/libupm-hp20x.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-wheelencoder.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_waterlevel.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_grovemoisture.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_gas.so.
+Removing obsolete file /usr/lib/libupm-hx711.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_adxrs610.py.
+Removing obsolete file /usr/lib/libupm-ecs1030.so.0.
+Removing obsolete file /usr/lib/libupm-smartdrive.so.0.
+Removing obsolete file /usr/lib/libupm-mpu9150.so.0.
+Removing obsolete file /usr/lib/libupm-nunchuck.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-rotaryencoder.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_buzzer.py.
+Removing obsolete file /usr/lib/libupm-adis16448.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_xbee.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_l298.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_h3lis331dl.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_a110x.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_isd1820.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_dfrph.so.
+Removing obsolete file /usr/lib/libupm-pca9685.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-grovewfs.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_hdxxvxta.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_nrf24l01.py.
+Removing obsolete file /usr/lib/libupm-buzzer.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_ecs1030.py.
+Removing obsolete file /usr/lib/libupm-interfaces.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_at42qt1070.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_si1132.py.
+Removing obsolete file /usr/lib/libupm-ta12200.so.0.
+Removing obsolete file /usr/lib/libupm-h3lis331dl.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_groveultrasonic.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_nrf8001.so.
+Removing obsolete file /usr/lib/libupm-hmtrp.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_cwlsxxa.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_ssd1351.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_my9221.so.
+Removing obsolete file /usr/lib/libupm-ad8232.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_ds1808lc.so.
+Removing obsolete file /usr/lib/libupm-micsv89.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-mq303a.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_grovewfs.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_grovemd.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_maxsonarez.so.
+Removing obsolete file /usr/lib/libupm-grovewater.so.0.
+Removing obsolete file /usr/lib/libupm-grovewater.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_ht9170.so.
+Removing obsolete file /usr/lib/libupm-rpr220.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-itg3200.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-zfm20.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_grovegsr.py.
+Removing obsolete file /usr/lib/libupm-grovemd.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_biss0001.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_max5487.so.
+Removing obsolete file /usr/lib/libupm-hmc5883l.so.0.
+Removing obsolete file /usr/lib/libupm-adxrs610.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_grovegprs.so.
+Removing obsolete file /usr/lib/libupm-sx6119.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_h803x.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_bma220.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_groveo2.so.
+Removing obsolete file /usr/lib/libupm-ublox6.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_mpr121.py.
+Removing obsolete file /usr/lib/libupm-vcap.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-a110x.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-ppd42ns.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_itg3200.py.
+Removing obsolete file /usr/lib/libupm-grovecollision.so.0.
+Removing obsolete file /usr/lib/libupm-ht9170.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-l298.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-apds9002.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_rgbringcoder.so.
+Removing obsolete file /usr/lib/libupm-wheelencoder.so.0.
+Removing obsolete file /usr/lib/libupm-maxds3231m.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-grovemoisture.so.0.
+Removing obsolete file /usr/lib/libupm-nrf24l01.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_bmp280.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_rotaryencoder.so.
+Removing obsolete file /usr/lib/libupm-ecs1030.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-si1132.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_ozw.py.
+Removing obsolete file /usr/lib/libupm-grovelinefinder.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_grovescam.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_wt5001.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_joystick12.so.
+Removing obsolete file /usr/lib/libupm-lpd8806.so.0.
+Removing obsolete file /usr/lib/libupm-ds1808lc.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_gp2y0a.py.
+Removing obsolete file /usr/lib/libupm-lpd8806.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_wheelencoder.py.
+Removing obsolete file /usr/lib/libupm-teams.so.0.
+Removing obsolete file /usr/lib/libupm-rgbringcoder.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_htu21d.py.
+Removing obsolete file /usr/lib/libupm-groveehr.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-ads1x15.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_rhusb.py.
+Removing obsolete file /usr/lib/libupm-enc03r.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-grovegsr.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_hp20x.so.
+Removing obsolete file /usr/lib/libupm-tex00.so.0.
+Removing obsolete file /usr/lib/libupm-mq303a.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_grovevdiv.so.
+Removing obsolete file /usr/lib/libupm-hlg150h.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_pn532.py.
+Removing obsolete file /usr/lib/libupm-gas.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-h803x.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_hmc5883l.py.
+Removing obsolete file /usr/lib/libupm-mpr121.so.0.
+Removing obsolete file /usr/lib/libupm-rhusb.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_tsl2561.py.
+Removing obsolete file /usr/lib/libupm-lol.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_guvas12d.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_max31723.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_max44009.py.
+Removing obsolete file /usr/lib/libupm-cwlsxxa.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-mma7660.so.0.
+Removing obsolete file /usr/lib/libupm-mma7660.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-zfm20.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-dfrph.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_micsv89.py.
+Removing obsolete file /usr/lib/libupm-th02.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_hlg150h.py.
+Removing obsolete file /usr/lib/libupm-apds9930.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-th02.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_ads1x15.so.
+Removing obsolete file /usr/lib/java/upm_ublox6.jar.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_mpl3115a2.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_ina132.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_lol.py.
+Removing obsolete file /usr/lib/libupm-lsm9ds0.so.0.
+Removing obsolete file /usr/lib/libupm-ht9170.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_adis16448.py.
+Removing obsolete file /usr/lib/libupm-tcs3414cs.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-bmi160.so.0.
+Removing obsolete file /usr/lib/libupm-grovecollision.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-gp2y0a.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_sx6119.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_mlx90614.py.
+Removing obsolete file /usr/lib/libupm-mic.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_hm11.py.
+Removing obsolete file /usr/lib/libupm-uln200xa.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_lm35.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_t6713.so.
+Removing obsolete file /usr/lib/libupm-adis16448.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_ttp223.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_pca9685.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_apds9002.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_lpd8806.so.
+Removing obsolete file /usr/lib/libupm-i2clcd.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_grovecollision.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_nlgpio16.py.
+Removing obsolete file /usr/lib/libupm-adafruitss.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_rfr359f.py.
+Removing obsolete file /usr/lib/libupm-adafruitss.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-ds1808lc.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_nunchuck.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_hx711.py.
+Removing obsolete file /usr/lib/libupm-waterlevel.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-groveeldriver.so.0.
+Removing obsolete file /usr/lib/libupm-tsl2561.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_t3311.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_apa102.so.
+Removing obsolete file /usr/lib/libupm-bmpx8x.so.0.
+Removing obsolete file /usr/lib/libupm-yg1006.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_ppd42ns.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_grovelinefinder.py.
+Removing obsolete file /usr/lib/libupm-ads1x15.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_grovewater.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_l3gd20.py.
+Removing obsolete file /usr/lib/libupm-grovegsr.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_mma7660.py.
+Removing obsolete file /usr/lib/libupm-joystick12.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_mcp9808.so.
+Removing obsolete file /usr/lib/libupm-hwxpxx.so.0.
+Removing obsolete file /usr/lib/node_modules/jsupm_ublox6/package.json.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_th02.so.
+Removing obsolete file /usr/lib/libupm-grove.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_urm37.py.
+Removing obsolete file /usr/lib/libupm-ds2413.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_groveultrasonic.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_kxcjk1013.py.
+Removing obsolete file /usr/lib/libupm-si7005.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_adxl335.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_ds18b20.py.
+Removing obsolete file /usr/lib/libupm-si114x.so.0.
+Removing obsolete file /usr/lib/libupm-lol.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_loudness.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_adc121c021.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_vcap.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_maxds3231m.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_mg811.py.
+Removing obsolete file /usr/lib/libupm-grovemd.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_mma7455.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_tex00.py.
+Removing obsolete file /usr/lib/libupm-hcsr04.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-hm11.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_teams.so.
+Removing obsolete file /usr/lib/libupm-sx6119.so.0.
+Removing obsolete file /usr/lib/libupm-apds9930.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_gas.py.
+Removing obsolete file /usr/lib/libupm-lm35.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_max44000.py.
+Removing obsolete file /usr/lib/libupm-lsm303.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-adxl335.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-ds18b20.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_si114x.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_grove.py.
+Removing obsolete file /usr/lib/libupm-pulsensor.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_grovespeaker.so.
+Removing obsolete file /usr/lib/libupm-isd1820.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-cjq4435.so.0.
+Removing obsolete file /usr/lib/libupm-mma7455.so.0.
+Removing obsolete file /usr/lib/libupm-cjq4435.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-rfr359f.so.0.
+Removing obsolete file /usr/lib/libupm-bmi160.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-biss0001.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_zfm20.py.
+Removing obsolete file /usr/lib/libupm-mcp9808.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_st7735.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_mhz16.py.
+Removing obsolete file /usr/lib/libupm-max44000.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_lsm303.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_sx1276.py.
+Removing obsolete file /usr/lib/libupm-max44000.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_apds9930.py.
+Removing obsolete file /usr/lib/libupm-mpu9150.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-smartdrive.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_otp538u.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_groveehr.py.
+Removing obsolete file /usr/lib/node_modules/jsupm_ublox6/jsupm_ublox6.node.
+Removing obsolete file /usr/lib/libupm-otp538u.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_interfaces.py.
+Removing obsolete file /usr/lib/libupm-ili9341.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_ta12200.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_pulsensor.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_groveelectromagnet.py.
+Removing obsolete file /usr/lib/libupm-grovewfs.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_l298.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_bmi160.py.
+Removing obsolete file /usr/lib/libupm-my9221.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-am2315.so.0.
+Removing obsolete file /usr/lib/libupm-bno055.so.0.
+Removing obsolete file /usr/lib/libupm-adafruitms1438.so.0.
+Removing obsolete file /usr/lib/libupm-st7735.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-ds1307.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_max31855.so.
+Removing obsolete file /usr/lib/libupm-yg1006.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-bmpx8x.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-hmtrp.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_rpr220.py.
+Removing obsolete file /usr/lib/libupm-nlgpio16.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_sm130.so.
+Removing obsolete file /usr/lib/libupm-adc121c021.so.0.
+Removing obsolete file /usr/lib/libupm-micsv89.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_ili9341.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_mic.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_lp8860.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_tm1637.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_dfrph.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_hcsr04.py.
+Removing obsolete file /usr/lib/libupm-hwxpxx.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_mpu9150.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_ds1307.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_h3lis331dl.so.
+Removing obsolete file /usr/lib/libupm-bma220.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_adxl345.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_ldt0028.so.
+Removing obsolete file /usr/lib/libupm-ina132.so.0.
+Removing obsolete file /usr/lib/libupm-stepmotor.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-ina132.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_ad8232.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_lsm9ds0.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_tcs3414cs.py.
+Removing obsolete file /usr/lib/libupm-lp8860.so.0.
+Removing obsolete file /usr/lib/libupm-tm1637.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_cjq4435.py.
+Removing obsolete file /usr/lib/libupm-dfrph.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_uln200xa.so.
+Removing obsolete file /usr/lib/libupm-pn532.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_groveemg.so.
+Removing obsolete file /usr/lib/libupm-hm11.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-max5487.so.0.
+Removing obsolete file /usr/lib/libupm-max5487.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_si7005.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_m24lr64e.py.
+Removing obsolete file /usr/lib/libupm-a110x.so.0.
+Removing obsolete file /usr/lib/libupm-ppd42ns.so.0.
+Removing obsolete file /usr/lib/libupm-tcs3414cs.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_i2clcd.so.
+Removing obsolete file /usr/lib/libupm-nrf8001.so.0.
+Removing obsolete file /usr/lib/libupm-groveelectromagnet.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-hp20x.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_stepmotor.py.
+Removing obsolete file /usr/lib/libupm-maxds3231m.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_bno055.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_am2315.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_adxrs610.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_my9221.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_adafruitss.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_ublox6.so.
+Removing obsolete file /usr/lib/libupm-grovevdiv.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-grovelinefinder.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_bmpx8x.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_yg1006.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_adafruitms1438.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_groveeldriver.py.
+Removing obsolete file /usr/lib/libupm-groveultrasonic.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_enc03r.so.
+Removing obsolete file /usr/lib/libupm-at42qt1070.so.0.
+Removing obsolete file /usr/lib/libupm-grovespeaker.so.0.
+Removing obsolete file /usr/lib/libupm-grovespeaker.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-ili9341.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_ht9170.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_mq303a.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_wheelencoder.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_hwxpxx.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_nrf8001.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_nrf24l01.so.
+Removing obsolete file /usr/lib/libupm-mhz16.so.0.
+Removing obsolete file /usr/lib/libupm-mhz16.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_ssd1351.py.
+Removing obsolete file /usr/lib/libupm-st7735.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_ds2413.so.
+Removing obsolete file /usr/lib/libupm-groveeldriver.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_hdxxvxta.py.
+Removing obsolete file /usr/lib/libupm-buzzer.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_smartdrive.py.
+Removing obsolete file /usr/lib/libupm-maxsonarez.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_isd1820.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_hmtrp.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_bma220.py.
+Removing obsolete file /usr/lib/libupm-enc03r.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_servo.so.
+Removing obsolete file /usr/lib/libupm-ta12200.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-h3lis331dl.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-ttp223.so.0.
+Removing obsolete file /usr/lib/libupm-guvas12d.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_grovewfs.so.
+Removing obsolete file /usr/lib/libupm-wt5001.so.0.
+Removing obsolete file /usr/lib/libupm-tex00.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-ssd1351.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-htu21d.so.0.
+Removing obsolete file /usr/lib/libupm-gas.so.0.
+Removing obsolete file /usr/lib/libupm-h803x.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_ds1808lc.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_ecs1030.so.
+Removing obsolete file /usr/lib/libupm-t3311.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_buzzer.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_waterlevel.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_grovelinefinder.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_max5487.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_cwlsxxa.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_groveo2.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_groveelectromagnet.so.
+Removing obsolete file /usr/lib/libupm-si7005.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_grovecollision.so.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_grovegsr.so.
+Removing obsolete file /usr/lib/libupm-stepmotor.so.0.
+Removing obsolete file /usr/lib/libupm-flex.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_biss0001.so.
+Removing obsolete file /usr/lib/libupm-max31855.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_grovemd.so.
+Removing obsolete file /usr/lib/libupm-hcsr04.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_wt5001.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_hp20x.py.
+Removing obsolete file /usr/lib/libupm-mlx90614.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-bmp280.so.0.
+Removing obsolete file /usr/lib/libupm-sx1276.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-kxcjk1013.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_si1132.so.
+Removing obsolete file /usr/lib/libupm-adxl335.so.0.
+Removing obsolete file /usr/lib/libupm-ds18b20.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_grovescam.so.
+Removing obsolete file /usr/lib/libupm-groveo2.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_a110x.so.
+Removing obsolete file /usr/lib/libupm-vcap.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_flex.so.
+Removing obsolete file /usr/lib/libupm-groveelectromagnet.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_at42qt1070.py.
+Removing obsolete file /usr/lib/libupm-nrf8001.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-mma7455.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-sm130.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-hx711.so.0.
+Removing obsolete file /usr/lib/libupm-hdxxvxta.so.0.
+Removing obsolete file /usr/lib/libupm-groveemg.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-m24lr64e.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_xbee.so.
+Removing obsolete file /usr/lib/libupm-rotaryencoder.so.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_grovegprs.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_lm35.py.
+Removing obsolete file /usr/lib/python2.7/site-packages/_pyupm_itg3200.so.
+Removing obsolete file /usr/lib/libupm-t6713.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-groveultrasonic.so.0.7.0.
+Removing obsolete file /usr/lib/libupm-otp538u.so.0.7.0.
+Removing obsolete file /usr/lib/python2.7/site-packages/pyupm_maxsonarez.py.
+Removing obsolete file /usr/lib/libupm-my9221.so.0.
+libcurl5 (7.52.1-r0) already installed on root.
+Upgrading curl-dev from 7.37.1-r0 to 7.52.1-r0 on root.
+Downloading http://iotdk.intel.com/repos/3.5/iotdk/edison/core2-32/curl-dev_7.52.1-r0_core2-32.ipk.
+upm (1.1.0) already installed on root.
+Configuring libcurl5.
+Configuring curl.
+Configuring mraa.
+Configuring upm.
+Collected errors:
+ * check_data_file_clashes: Package curl-dev wants to install file /usr/include/curl/stdcheaders.h
+	But that file is already provided by package  * libcurl-dev
+ * check_data_file_clashes: Package curl-dev wants to install file /usr/include/curl/curlbuild-32.h
+	But that file is already provided by package  * libcurl-dev
+ * check_data_file_clashes: Package curl-dev wants to install file /usr/include/curl/multi.h
+	But that file is already provided by package  * libcurl-dev
+ * check_data_file_clashes: Package curl-dev wants to install file /usr/include/curl/curl.h
+	But that file is already provided by package  * libcurl-dev
+ * check_data_file_clashes: Package curl-dev wants to install file /usr/include/curl/curlver.h
+	But that file is already provided by package  * libcurl-dev
+ * check_data_file_clashes: Package curl-dev wants to install file /usr/include/curl/curlbuild.h
+	But that file is already provided by package  * libcurl-dev
+ * check_data_file_clashes: Package curl-dev wants to install file /usr/include/curl/curlrules.h
+	But that file is already provided by package  * libcurl-dev
+ * check_data_file_clashes: Package curl-dev wants to install file /usr/include/curl/easy.h
+	But that file is already provided by package  * libcurl-dev
+ * check_data_file_clashes: Package curl-dev wants to install file /usr/include/curl/typecheck-gcc.h
+	But that file is already provided by package  * libcurl-dev
+ * check_data_file_clashes: Package curl-dev wants to install file /usr/include/curl/mprintf.h
+	But that file is already provided by package  * libcurl-dev
+ * check_data_file_clashes: Package curl-dev wants to install file /usr/bin/curl-config
+	But that file is already provided by package  * libcurl-dev
+ * check_data_file_clashes: Package curl-dev wants to install file /usr/lib/pkgconfig/libcurl.pc
+	But that file is already provided by package  * libcurl-dev
+ * check_data_file_clashes: Package curl-dev wants to install file /usr/lib/libcurl.la
+	But that file is already provided by package  * libcurl-dev
+ * check_data_file_clashes: Package curl-dev wants to install file /usr/share/aclocal/libcurl.m4
+	But that file is already provided by package  * libcurl-dev
+root@edison:/home# vi /etc/opkg/base-feeds.conf 
+[?1000h7[?47h[?1h=[2;1H½[6n[2;1H  [1;1H[1;24r[m[H[2J[24;1H"/etc/opkg/base-feeds.conf" 0L, 0C[>c[2;1H[1m[34m~                                                                               [3;1H~                                                                               [4;1H~                                                                               [5;1H~                                                                               [6;1H~                                                                               [7;1H~                                                                               [8;1H~                                                                               [9;1H~                                                                               [10;1H~                                                                               [11;1H~                                                                               [12;1H~                                                                               [13;1H~                                                                               [14;1H~                                                                               [15;1H~                                                                               [16;1H~                                                                               [17;1H~                                                                               [18;1H~                                                                               [19;1H~                                                                               [20;1H~                                                                               [21;1H~                                                                               [22;1H~                                                                               [23;1H~                                                                               [m[24;63H0,0-1[9CAll[1;1H[24;53Hi[1;1H[24;53H [1;1H[24;1H[1m-- INSERT --[m[24;13H[K[24;63H0,1[11CAll[1;1Hsrc/gz all http://repo.opkg.net/edison/repo/all
+        src/gz edison http://repo.opkg.net/edison/repo/edison[2;62H[K[3;1H        src/gz core2-32 http://repo.opkg.net/edison/repo/core2-32[3;66H[K[24;63H3,66[3;66H[24;63H2,9 [2;9H[24;65H8[2;8H[24;65H9[2;9H[24;65H8[2;8Hsrc/gz edison http://repo.opkg.net/edison/repo/edison[2;61H[K[24;65H7[2;7Hsrc/gz edison http://repo.opkg.net/edison/repo/edison[2;60H[K[24;65H6[2;6Hsrc/gz edison http://repo.opkg.net/edison/repo/edison[2;59H[K[24;65H5[2;5Hsrc/gz edison http://repo.opkg.net/edison/repo/edison[2;58H[K[24;65H4[2;4Hsrc/gz edison http://repo.opkg.net/edison/repo/edison[2;57H[K[24;65H3[2;3Hsrc/gz edison http://repo.opkg.net/edison/repo/edison[2;56H[K[24;65H2[2;2Hsrc/gz edison http://repo.opkg.net/edison/repo/edison[2;55H[K[24;65H1[2;1H[24;65H2[2;2Hsrc/gz edison http://repo.opkg.net/edison/repo/edison[2;54H[K[24;65H1[2;1H[24;63H3[3;1H[24;65H2[3;2H[24;65H3[3;3H[24;65H4[3;4H[24;65H5[3;5H[24;65H6[3;6H[24;65H7[3;7H[24;65H8[3;8H[24;65H9[3;9Hsrc/gz core2-32 http://repo.opkg.net/edison/repo/core2-32[3;65H[K[24;65H8[3;8Hsrc/gz core2-32 http://repo.opkg.net/edison/repo/core2-32[3;64H[K[24;65H7[3;7Hsrc/gz core2-32 http://repo.opkg.net/edison/repo/core2-32[3;63H[K[24;65H6[3;6Hsrc/gz core2-32 http://repo.opkg.net/edison/repo/core2-32[3;62H[K[24;65H5[3;5Hsrc/gz core2-32 http://repo.opkg.net/edison/repo/core2-32[3;61H[K[24;65H4[3;4Hsrc/gz core2-32 http://repo.opkg.net/edison/repo/core2-32[3;60H[K[24;65H3[3;3Hsrc/gz core2-32 http://repo.opkg.net/edison/repo/core2-32[3;59H[K[24;65H2[3;2Hsrc/gz core2-32 http://repo.opkg.net/edison/repo/core2-32[3;58H[K[24;65H1[3;1H[24;1H[K[3;1H[24;53H^[[3;1H[24;53H  [3;1H[24;63H3,1[11CAll[3;1H[24;53H:[3;1H[24;53H[K[24;1H:w"/etc/opkg/base-feeds.conf" 3L, 160C written[3;1H[24;63H3,1[11CAll[24;63H[K[24;63H3,1[11CAll[3;1H[24;53H:[3;1H[24;1H[K[24;1H:q[?1000l[24;1H[K[24;1H[?1l>[2J[?47l8root@edison:/home# opkg update
+Downloading http://repo.opkg.net/edison/repo/all/Packages.gz.
+Inflating http://repo.opkg.net/edison/repo/all/Packages.gz.
+Updated list of available packages in /var/lib/opkg/all.
+Downloading http://repo.opkg.net/edison/repo/edison/Packages.gz.
+Inflating http://repo.opkg.net/edison/repo/edison/Packages.gz.
+Updated list of available packages in /var/lib/opkg/edison.
+Downloading http://repo.opkg.net/edison/repo/core2-32/Packages.gz.
+Inflating http://repo.opkg.net/edison/repo/core2-32/Packages.gz.
+Updated list of available packages in /var/lib/opkg/core2-32.
+Downloading http://iotdk.intel.com/repo/1.1/intelgalactic/Packages.
+Downloading http://iotdk.intel.com/repos/3.5/intelgalactic/opkg/i586//Packages.
+Updated list of available packages in /var/lib/opkg/iotkit.
+Downloading http://iotdk.intel.com/repos/3.5/iotdk/edison/all/Packages.
+Updated list of available packages in /var/lib/opkg/iotdk-all.
+Downloading http://iotdk.intel.com/repos/3.5/iotdk/edison/core2-32/Packages.
+Updated list of available packages in /var/lib/opkg/iotdk-core2-32.
+Downloading http://iotdk.intel.com/repos/3.5/iotdk/edison/edison/Packages.
+Updated list of available packages in /var/lib/opkg/iotdk-edison.
+Collected errors:
+ * opkg_download: Failed to download http://iotdk.intel.com/repo/1.1/intelgalactic/Packages, wget returned 8.
+root@edison:/home# opkg install python-pip
+Package python-pip (1.3.1-r0) installed in root is up to date.
+root@edison:/home# pip install flask
+-sh: /usr/local/bin/pip: /usr/local/bin/python3.6: bad interpreter: No such file or directory
+root@edison:/home# Package python-pip
+-sh: Package: command not found
+root@edison:/home# ls
+lost+found  root
+root@edison:/home# cd root
+root@edison:~# ls
+Python-3.6.0  get-pip.py  readme		 test.py
+ez_setup.py   hi.txt	  setuptools-33.1.1.zip
+root@edison:~# 
