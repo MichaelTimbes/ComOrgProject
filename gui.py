@@ -131,10 +131,18 @@ def weatherAPICall():
 
     print (data)
     t = u"\u00b0"
+
+    print("weatherImages/" + data[u'weather'][0][u'description'] + ".png")
+
+    # Image include with resizing
+    displayWeatherImage(data[u'weather'][0][u'description'])
+
+
     WeatherTemp.config(text = data[u'weather'][0][u'description']
                         + '\nTemperature: '
                         + str(data[u'main'][u'temp'])
                         + t + 'C')
+
 
 def twitterAPICall():
     consumer_key= '5Sgpga1fHgZ9IxAC5oKMXdHod'
@@ -204,6 +212,18 @@ def gmailAPICall():
             i += 1
         GmailLabel.config(text=(subject[0] + "\n"))
 
+def displayWeatherImage(description):
+
+    image = Image.open("weatherImages/" + "sunny" + ".png")
+    image = image.resize((270, 250), Image.ANTIALIAS)
+    photo = ImageTk.PhotoImage(image)
+    WeatherImage.configure(image=photo)
+    #WeatherImage.image = photo
+
+#sunny ->  image = image.resize((270, 250), Image.ANTIALIAS)
+
+
+
 ###################################################
 
 
@@ -244,7 +264,7 @@ Title.pack(side=BOTTOM,expand=0)
 Title.config(text = 'Project by Group 1: \nDominic Critchlow, Travis Hodge, Dylan Kellogg, Michael Timbes')
 
 # POTUS Twitter
-PotusTweet = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground)
+PotusTweet = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground,justify = 'left')
 PotusTweet.pack(expand = 0)
 
 # Calendar Label
@@ -254,6 +274,10 @@ CalenderLabel.pack(expand = 0)
 # Gmail Label
 GmailLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground)
 GmailLabel.pack(expand = 0)
+
+# Weather Image
+WeatherImage = Label(root,bg = 'white')
+WeatherImage.pack(expand = 0)
 ###################################################
 
 
@@ -265,6 +289,7 @@ stockAPICall()
 twitterAPICall()
 calendarAPICall()
 gmailAPICall()
+
 ###################################################
 
 
