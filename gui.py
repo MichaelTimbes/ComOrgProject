@@ -39,6 +39,8 @@ fonttype = 'adobe' # different maybe franklin, need to check with good fonts on 
 fontstyle = 'bold'
 foreground = 'white'
 
+def exit():
+    root.quit()
 
 def get_credentials_calendar():
 
@@ -218,7 +220,7 @@ def displayWeatherImage(description):
     image = image.resize((270, 250), Image.ANTIALIAS)
     photo = ImageTk.PhotoImage(image)
     WeatherImage.configure(image=photo)
-    #WeatherImage.image = photo
+    WeatherImage.image = photo
 
 #sunny ->  image = image.resize((270, 250), Image.ANTIALIAS)
 
@@ -276,7 +278,7 @@ GmailLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground)
 GmailLabel.pack(expand = 0)
 
 # Weather Image
-WeatherImage = Label(root,bg = 'white')
+WeatherImage = Label(root,bg = 'black')
 WeatherImage.pack(expand = 0)
 ###################################################
 
@@ -301,7 +303,7 @@ w, h = root.winfo_screenwidth(), root.winfo_screenheight()
 root.overrideredirect(1)
 root.geometry("%dx%d+0+0" % (w, h))
 root.focus_set() # <-- move focus to this widget
-root.bind("<Escape>", lambda e: e.widget.quit())
+root.bind("<Escape>", exit)
 root.configure(background='black')
 # Running of the GUI Loop
 root.mainloop(  )
