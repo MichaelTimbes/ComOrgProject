@@ -12,22 +12,19 @@ import requests
 import tweepy
 import datetime
 import xmltodict
-
-
 import httplib2
 import os
-
 from apiclient import discovery
 from oauth2client import client
 from oauth2client import tools
 from oauth2client.file import Storage
+from PIL import Image, ImageTk
 
 try:
     import argparse
     flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
 except ImportError:
     flags = None
-
 
 SCOPES_cal = 'https://www.googleapis.com/auth/calendar.readonly'
 CLIENT_SECRET_FILE_cal = 'client_secret.json'
@@ -38,12 +35,9 @@ CLIENT_SECRET_FILE_gmail = 'client_secret.json'
 APPLICATION_NAME_gmail = 'Gmail API Python Quickstart'
 
 
-fonttype = 'adobe' # different maybe franklin
+fonttype = 'adobe' # different maybe franklin, need to check with good fonts on Rasbian
 fontstyle = 'bold'
-forground = 'white'
-
-
-
+foreground = 'white'
 
 
 def get_credentials_calendar():
@@ -90,12 +84,13 @@ def get_credentials_gmail():
 
 ###################################################
 # Functions to be repeated and updated while running
+
+
 def clockUpdate():
     global time1
     today = datetime.date.today()
-
     time2 = time.strftime('%H:%M:%S')
-    time2 = time2 + '\n'+str(today)
+    time2 = time2 + '\n'+str(today.strftime("%A \n%d %B %Y"))
 
     if time2 != time1:
         time1 = time2
@@ -104,17 +99,24 @@ def clockUpdate():
     timeOfDay()
     Clock.after(200, clockUpdate)
 
+def timeOfDay():
+    currentTime = datetime.datetime.now()
+    if currentTime.hour < 12:
+        DayGreet.config(text = 'Good Morning')
+    elif 12 <= currentTime.hour < 18:
+        DayGreet.config(text = 'Good Afternoon')
+    else:
+        DayGreet.config(text = 'Good Evening')
+
 def stockAPICall():
     url1 = "http://dev.markitondemand.com/MODApis/Api/v2/Quote"
     parameters = {'symbol':"AAPL", 'callback':"jsoncallback"}
     stock = requests.get(url1, params=parameters)
     if stock.status_code == 200:
-        data1 = xmltodict.parse(stock.content)
-
-    print (data1)
-    stockData.config(text = "Stock: " + data1[u'StockQuote'][u'Name']
-                            +"\nStock Price: " + data1[u'StockQuote'][u'LastPrice'])
-
+        stock_json = xmltodict.parse(stock.content)
+    print (stock_json)
+    StockData.config(text = "Stock: " + stock_json[u'StockQuote'][u'Name']
+                            +"\nStock Price: " + stock_json[u'StockQuote'][u'LastPrice'])
 
 def weatherAPICall():
     url = 'http://api.openweathermap.org/data/2.5/weather?APPID=301e59e1ab9370e1f7644445df46f156' # url goes here
@@ -149,16 +151,6 @@ def twitterAPICall():
     print (result_tweet)
     PotusTweet.config(text = result_tweet)
 
-def timeOfDay():
-    currentTime = datetime.datetime.now()
-    if currentTime.hour < 12:
-        DayGreet.config(text = 'Good Morning \nHandsome')
-    elif 12 <= currentTime.hour < 18:
-        DayGreet.config(text = 'Good Afternoon \nHandsome')
-    else:
-        DayGreet.config(text = 'Good Evening \nHandsome')
-
-
 def calendarAPICall():
 
     credentials = get_credentials_calendar()
@@ -167,7 +159,6 @@ def calendarAPICall():
 
     now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
     print (now)
-    print('Getting the upcoming 10 events')
     eventsResult = service.events().list(
         calendarId='primary', timeMin=now, maxResults=5, singleEvents=True,
         orderBy='startTime').execute()
@@ -176,18 +167,13 @@ def calendarAPICall():
     if not events:
         print('No upcoming events found.')
         CalenderLabel.config(text = 'No upcoming events found.')
-    for event in events:
-        start = event['start'].get('dateTime', event['start'].get('date'))
-        print(start, event['summary'])
-    CalenderLabel.config(text = events[0]['start'].get('dateTime', events[0]['start'].get('date'))
-    + " " + events[0]['summary'])
+    else:
+        for event in events:
+            start = event['start'].get('dateTime', event['start'].get('date'))
+            print(start, event['summary'])
+            CalenderLabel.config(text = events[0]['start'].get('dateTime', events[0]['start'].get('date'))+ " " + events[0]['summary'])
 
 def gmailAPICall():
-    """Shows basic usage of the Gmail API.
-
-    Creates a Gmail API service object and outputs a list of label names
-    of the user's Gmail account.
-    """
     credentials = get_credentials_gmail()
     http = credentials.authorize(httplib2.Http())
     service = discovery.build('gmail', 'v1', http=http)
@@ -200,21 +186,25 @@ def gmailAPICall():
 
     subject = [None]*10
     i=0
-    for unreads in unread_mes_id:
-        message1 = service.users().messages().get(userId='me', id=unreads[u'id'], format='metadata').execute()
-        msg = message1[u'payload']
+    if unread_mes_num == 0:
+        print("No unread Messages!")
+        GmailLabel.config(text="No unread Messages!")
 
-        for header in msg[u'headers']:
-            if header[u'name'] == u'Subject':
-                subject[i] = header[u'value']
-                break
-        if subject:
-            print (subject)
-        i += 1
-    GmailLabel.config(text=(subject[0] + "\n"))
+    else:
+        for unreads in unread_mes_id:
+            message1 = service.users().messages().get(userId='me', id=unreads[u'id'], format='metadata').execute()
+            msg = message1[u'payload']
+
+            for header in msg[u'headers']:
+                if header[u'name'] == u'Subject':
+                    subject[i] = header[u'value']
+                    break
+            if subject:
+                print (subject)
+            i += 1
+        GmailLabel.config(text=(subject[0] + "\n"))
 
 ###################################################
-
 
 
 
@@ -228,42 +218,41 @@ root = Tk()
 ###################################################
 # Clock Object
 time1 = ''
-Clock = Label(root, font=(fonttype, 40, fontstyle), bg='black',fg=forground)
+Clock = Label(root, font=(fonttype, 40, fontstyle), bg='black',fg=foreground)
 Clock.pack(side=LEFT,expand=0)
 
 # Weather Object
-WeatherTemp = Label(root, font=(fonttype,40,fontstyle),bg='black',fg= forground)
+WeatherTemp = Label(root, font=(fonttype,40,fontstyle),bg='black',fg= foreground)
 WeatherTemp.pack(side = RIGHT, expand =0)
 
-#Stock Object
-stockData = Label(root, font=(fonttype,40,fontstyle),bg='black',fg= forground)
-stockData.pack(side = RIGHT, expand =0)
-stockData.place(x=900, y=700)
+# Stock Object
+StockData = Label(root, font=(fonttype,40,fontstyle),bg='black',fg= foreground)
+StockData.pack(side = RIGHT, expand =0)
+StockData.place(x=900, y=700)
 
 # Title Object
-Title = Label(root, font=(fonttype, 80, fontstyle), bg='black',fg=forground)
+Title = Label(root, font=(fonttype, 80, fontstyle), bg='black',fg=foreground)
 Title.pack(side=TOP,expand=0)
-#Title.config(text = 'SMART MIRROR')
 
 # Greeting Object
-DayGreet = Label(root, font=(fonttype, 65, fontstyle), bg='black',fg=forground)
+DayGreet = Label(root, font=(fonttype, 65, fontstyle), bg='black',fg=foreground)
 DayGreet.pack(side=TOP,expand=0)
 
-#Footer
-Title = Label(root, font=(fonttype,20, fontstyle), bg='black',fg=forground)
+# Footer
+Title = Label(root, font=(fonttype,20, fontstyle), bg='black',fg=foreground)
 Title.pack(side=BOTTOM,expand=0)
 Title.config(text = 'Project by Group 1: \nDominic Critchlow, Travis Hodge, Dylan Kellogg, Michael Timbes')
 
 # POTUS Twitter
-PotusTweet = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= forground)
+PotusTweet = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground)
 PotusTweet.pack(expand = 0)
 
 # Calendar Label
-CalenderLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= forground)
+CalenderLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground)
 CalenderLabel.pack(expand = 0)
 
 # Gmail Label
-GmailLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= forground)
+GmailLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground)
 GmailLabel.pack(expand = 0)
 ###################################################
 
@@ -292,3 +281,13 @@ root.configure(background='black')
 # Running of the GUI Loop
 root.mainloop(  )
 ###################################################
+
+
+
+# Image include with resizing
+#image = Image.open("picture.png")
+#image = image.resize((250, 250), Image.ANTIALIAS)
+#photo = ImageTk.PhotoImage(image)
+#label = Label(image=photo)
+#label.image = photo # keep a reference!
+#label.pack()
