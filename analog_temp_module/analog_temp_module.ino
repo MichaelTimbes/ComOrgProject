@@ -17,5 +17,6 @@ delay(sensorValue);
 digitalWrite(ledPin,  LOW);
 delay(sensorValue);
 Serial.println(sensorValue,  DEC);
+//Serial.write(sensorValue)
 }
 
