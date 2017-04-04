@@ -38,6 +38,11 @@ APPLICATION_NAME_gmail = 'Gmail API Python Quickstart'
 fonttype = 'adobe' # different maybe franklin, need to check with good fonts on Rasbian
 fontstyle = 'bold'
 foreground = 'white'
+StockTicker = "AAPL"
+
+# size of the weather icon needs to be adjusted for final screen
+sizex = 250
+sizey = 250
 
 def exit():
     root.quit()
@@ -112,13 +117,25 @@ def timeOfDay():
 
 def stockAPICall():
     url1 = "http://dev.markitondemand.com/MODApis/Api/v2/Quote"
-    parameters = {'symbol':"AAPL", 'callback':"jsoncallback"}
+    parameters = {'symbol':StockTicker, 'callback':"jsoncallback"}
     stock = requests.get(url1, params=parameters)
     if stock.status_code == 200:
         stock_json = xmltodict.parse(stock.content)
     print (stock_json)
     StockData.config(text = "Stock: " + stock_json[u'StockQuote'][u'Name']
                             +"\nStock Price: " + stock_json[u'StockQuote'][u'LastPrice'])
+
+    print (stock_json[u'StockQuote'][u'Change'])
+    if(float(stock_json[u'StockQuote'][u'Change']) > 0):
+        arrow = Image.open("weatherImages/green_arrow.png")
+    else:
+        arrow = Image.open("weatherImages/red_arrow.png")
+
+
+    arrow = arrow.resize((75, 85), Image.ANTIALIAS)
+    photo = ImageTk.PhotoImage(arrow)
+    StockImage.configure(image=photo)
+    StockImage.image = photo
 
 def weatherAPICall():
     url = 'http://api.openweathermap.org/data/2.5/weather?APPID=301e59e1ab9370e1f7644445df46f156' # url goes here
@@ -145,6 +162,7 @@ def weatherAPICall():
                         + str(data[u'main'][u'temp'])
                         + t + 'C')
 
+    WeatherTemp.after(200000,weatherAPICall)
 
 def twitterAPICall():
     consumer_key= '5Sgpga1fHgZ9IxAC5oKMXdHod'
@@ -155,11 +173,16 @@ def twitterAPICall():
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)
 
-    potus_tweet = api.user_timeline(screen_name = 'cnnbrk',count=2)
-    result_tweet = potus_tweet[0].text
-    #result_tweet = result_tweet.sub(r"http\S+", "", subject)
+    potus_tweet = api.user_timeline(screen_name = 'cnnbrk',count=3)
+    result_tweet = potus_tweet[0].text + "\n" + potus_tweet[1].text + "\n" + potus_tweet[2].text
+    print(result_tweet)
+    result_tweet = re.sub(r"(?:\@|https?\://)\S+", "", result_tweet)
+
+
     print (result_tweet)
     PotusTweet.config(text = result_tweet)
+
+    PotusTweet.after(200000, twitterAPICall)
 
 def calendarAPICall():
 
@@ -173,15 +196,19 @@ def calendarAPICall():
         calendarId='primary', timeMin=now, maxResults=5, singleEvents=True,
         orderBy='startTime').execute()
     events = eventsResult.get('items', [])
-
+    calendertext = ''
     if not events:
-        print('No upcoming events found.')
-        CalenderLabel.config(text = 'No upcoming events found.')
+        print('No Upcoming Events Found!')
+        CalenderLabel.config(text = 'No Upcoming Events Found!')
     else:
         for event in events:
             start = event['start'].get('dateTime', event['start'].get('date'))
             print(start, event['summary'])
-            CalenderLabel.config(text = events[0]['start'].get('dateTime', events[0]['start'].get('date'))+ " " + events[0]['summary'])
+
+            calendertext += event['start'].get('dateTime', event['start'].get('date'))+ " " + event['summary'] + "\n"
+            CalenderLabel.config(text = calendertext)
+
+    CalenderLabel.after(100000, calendarAPICall)
 
 def gmailAPICall():
     credentials = get_credentials_gmail()
@@ -197,8 +224,8 @@ def gmailAPICall():
     subject = [None]*10
     i=0
     if unread_mes_num == 0:
-        print("No unread Messages!")
-        GmailLabel.config(text="No unread Messages!")
+        print("No Unread Messages!")
+        GmailLabel.config(text="No Unread Messages!")
 
     else:
         for unreads in unread_mes_id:
@@ -214,15 +241,36 @@ def gmailAPICall():
             i += 1
         GmailLabel.config(text=(subject[0] + "\n"))
 
+    GmailLabel.after(100000, gmailAPICall)
+
 def displayWeatherImage(description):
 
-    image = Image.open("weatherImages/" + "sunny" + ".png")
-    image = image.resize((270, 250), Image.ANTIALIAS)
+    # Add other weather conditions here you see come through the description until we find a complete list
+
+    if(description == 'sunny'):
+        image = Image.open("weatherImages/sunny.png")
+    elif(description == 'cloudy'):
+        image = Image.open("weatherImages/cloudy.png")
+    elif (description == 'rainy'):
+        image = Image.open("weatherImages/rainy.png")
+    elif (description == 'thunder'):
+        image = Image.open("weatherImages/thunder.png")
+    elif (description == 'scattered clouds'):
+        image = Image.open("weatherImages/scattered clouds.png")
+    elif (description == 'overcast clouds'):
+        image = Image.open("weatherImages/cloudy.png")
+    else:
+        image = Image.open("weatherImages/scattered clouds.png")
+
+
+    image = image.resize((sizex, sizey), Image.ANTIALIAS)
     photo = ImageTk.PhotoImage(image)
     WeatherImage.configure(image=photo)
     WeatherImage.image = photo
 
-#sunny ->  image = image.resize((270, 250), Image.ANTIALIAS)
+
+
+
 
 
 
@@ -237,53 +285,103 @@ root = Tk()
 
 
 
-###################################################
-# Clock Object
+###################################################################
+
+# Clock Object ####################################################
 time1 = ''
 Clock = Label(root, font=(fonttype, 40, fontstyle), bg='black',fg=foreground)
 Clock.pack(side=LEFT,expand=0)
+#Clock.place(x=900, y=700)
+###################################################################
 
-# Weather Object
+
+# Weather Object ##################################################
 WeatherTemp = Label(root, font=(fonttype,40,fontstyle),bg='black',fg= foreground)
 WeatherTemp.pack(side = RIGHT, expand =0)
+#WeatherTemp.place(x=900, y=700)
 
-# Stock Object
-StockData = Label(root, font=(fonttype,40,fontstyle),bg='black',fg= foreground)
-StockData.pack(side = RIGHT, expand =0)
-StockData.place(x=900, y=700)
 
-# Title Object
-Title = Label(root, font=(fonttype, 80, fontstyle), bg='black',fg=foreground)
-Title.pack(side=TOP,expand=0)
-
-# Greeting Object
-DayGreet = Label(root, font=(fonttype, 65, fontstyle), bg='black',fg=foreground)
-DayGreet.pack(side=TOP,expand=0)
-
-# Footer
-Title = Label(root, font=(fonttype,20, fontstyle), bg='black',fg=foreground)
-Title.pack(side=BOTTOM,expand=0)
-Title.config(text = 'Project by Group 1: \nDominic Critchlow, Travis Hodge, Dylan Kellogg, Michael Timbes')
-
-# POTUS Twitter
-PotusTweet = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground,justify = 'left')
-PotusTweet.pack(expand = 0)
-
-# Calendar Label
-CalenderLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground)
-CalenderLabel.pack(expand = 0)
-
-# Gmail Label
-GmailLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground)
-GmailLabel.pack(expand = 0)
-
-# Weather Image
 WeatherImage = Label(root,bg = 'black')
 WeatherImage.pack(expand = 0)
-###################################################
+WeatherImage.place(x=1000, y=100)
+
+###################################################################
 
 
-###################################################
+# Stock Object ####################################################
+StockData = Label(root, font=(fonttype,40,fontstyle),bg='black',fg= foreground)
+StockData.pack(side = RIGHT, expand =0)
+StockData.place(x=750, y=600)
+
+StockImage = Label(root,bg = 'black')
+StockImage.pack(expand = 0)
+StockImage.place(x=1150, y=600)
+###################################################################
+
+
+# Greeting Object #################################################
+DayGreet = Label(root, font=(fonttype, 65, fontstyle), bg='black',fg=foreground)
+DayGreet.pack(side=TOP,expand=0)
+#DayGreet.place(x=900, y=700)
+###################################################################
+
+
+# Footer ##########################################################
+Footer = Label(root, font=(fonttype,20, fontstyle), bg='black',fg=foreground)
+Footer.pack(side=BOTTOM,expand=0)
+Footer.config(text = 'Project by Group 1: \nDominic Critchlow, Travis Hodge, Dylan Kellogg, Michael Timbes')
+#Footer.place(x=900, y=700)
+###################################################################
+
+
+# Twitter #########################################################
+twitter_logo = Image.open("weatherImages/twitter_logo.png")
+twitter_logo = twitter_logo.resize((45, 45), Image.ANTIALIAS)
+photo_twitter = ImageTk.PhotoImage(twitter_logo)
+TwitterNews = Label(root, font=(fonttype,25,fontstyle),bg='black',fg= foreground,justify = 'left',
+                    image =photo_twitter,text = 'Twitter News',compound = 'left' )
+TwitterNews.pack(expand=0)
+PotusTweet = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground,justify = 'left',wraplength=500, anchor=NW)
+PotusTweet.pack(expand = 0)
+###################################################################
+
+
+# Calendar Label ##################################################
+calendar_logo = Image.open("weatherImages/calendar_logo.png")
+calendar_logo = calendar_logo.resize((30, 30), Image.ANTIALIAS)
+photo_calendar = ImageTk.PhotoImage(calendar_logo)
+Calendar_Note = Label(root, font=(fonttype,25,fontstyle),bg='black',fg= foreground,justify = 'left',
+                    image =photo_calendar,text = 'Calendar',compound = 'left',wraplength=500, anchor=NW )
+Calendar_Note.pack(expand=0)
+
+CalenderLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground)
+CalenderLabel.pack(expand = 0)
+###################################################################
+
+
+# Gmail Label #####################################################
+gmail_logo = Image.open("weatherImages/mail_logo.png")
+gmail_logo = gmail_logo.resize((35, 35), Image.ANTIALIAS)
+photo_mail = ImageTk.PhotoImage(gmail_logo)
+gmail_Note = Label(root, font=(fonttype,25,fontstyle),bg='black',fg= foreground,justify = 'left',
+                    image =photo_mail,text = 'Mail',compound = 'left' ,wraplength=500, anchor=NW)
+gmail_Note.pack(expand=0)
+
+GmailLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground)
+GmailLabel.pack(expand = 0)
+###################################################################
+
+
+
+
+
+
+
+
+
+
+
+###################################################################
 # Call Function for items
 clockUpdate()
 weatherAPICall()
@@ -308,13 +406,3 @@ root.configure(background='black')
 # Running of the GUI Loop
 root.mainloop(  )
 ###################################################
-
-
-
-# Image include with resizing
-#image = Image.open("picture.png")
-#image = image.resize((250, 250), Image.ANTIALIAS)
-#photo = ImageTk.PhotoImage(image)
-#label = Label(image=photo)
-#label.image = photo # keep a reference!
-#label.pack()
