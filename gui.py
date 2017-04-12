@@ -162,7 +162,7 @@ def weatherAPICall():
                         + str(data[u'main'][u'temp'])
                         + t + 'C')
 
-    WeatherTemp.after(200000,weatherAPICall)
+    WeatherTemp.after(100000,weatherAPICall)
 
 def twitterAPICall():
     consumer_key= '5Sgpga1fHgZ9IxAC5oKMXdHod'
@@ -182,7 +182,7 @@ def twitterAPICall():
     print (result_tweet)
     PotusTweet.config(text = result_tweet)
 
-    PotusTweet.after(200000, twitterAPICall)
+    PotusTweet.after(15000, twitterAPICall) # Every 15 seconds
 
 def calendarAPICall():
 
@@ -208,7 +208,7 @@ def calendarAPICall():
             calendertext += event['start'].get('dateTime', event['start'].get('date'))+ " " + event['summary'] + "\n"
             CalenderLabel.config(text = calendertext)
 
-    CalenderLabel.after(100000, calendarAPICall)
+    CalenderLabel.after(15000, calendarAPICall) # Every 15 seconds
 
 def gmailAPICall():
     credentials = get_credentials_gmail()
@@ -241,7 +241,7 @@ def gmailAPICall():
             i += 1
         GmailLabel.config(text=(subject[0] + "\n"))
 
-    GmailLabel.after(100000, gmailAPICall)
+    GmailLabel.after(15000, gmailAPICall) # Every 15 seconds
 
 def displayWeatherImage(description):
 
@@ -270,10 +270,6 @@ def displayWeatherImage(description):
 
 
 
-
-
-
-
 ###################################################
 
 
@@ -284,13 +280,20 @@ root = Tk()
 ###################################################
 
 
-
 ###################################################################
 
 # Clock Object ####################################################
+#clock_logo = Image.open("weatherImages/clock_logo.png")
+#clock_logo = clock_logo.resize((45, 45), Image.ANTIALIAS)
+#photo_clock = ImageTk.PhotoImage(clock_logo)
+#Clock_Disp = Label(root, font=(fonttype,25,fontstyle),bg='black',fg= foreground,justify = 'left',
+                    #image =photo_clock,text = 'Current Time',compound = 'left' )
+
+#Clock_Disp.pack(expand =0)
+
 time1 = ''
 Clock = Label(root, font=(fonttype, 40, fontstyle), bg='black',fg=foreground)
-Clock.pack(side=LEFT,expand=0)
+Clock.pack(side = 'left',expand=0)
 #Clock.place(x=900, y=700)
 ###################################################################
 
@@ -370,13 +373,6 @@ gmail_Note.pack(expand=0)
 GmailLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground)
 GmailLabel.pack(expand = 0)
 ###################################################################
-
-
-
-
-
-
-
 
 
 
