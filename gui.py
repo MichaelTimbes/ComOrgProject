@@ -43,6 +43,9 @@ StockTicker = "AAPL"
 # size of the weather icon needs to be adjusted for final screen
 sizex = 250
 sizey = 250
+update_speed = 15000
+
+init_run = 0
 
 def exit():
     root.quit()
@@ -178,11 +181,10 @@ def twitterAPICall():
     print(result_tweet)
     result_tweet = re.sub(r"(?:\@|https?\://)\S+", "", result_tweet)
 
-
     print (result_tweet)
     PotusTweet.config(text = result_tweet)
 
-    PotusTweet.after(15000, twitterAPICall) # Every 15 seconds
+    PotusTweet.after(update_speed, twitterAPICall)
 
 def calendarAPICall():
 
@@ -208,9 +210,12 @@ def calendarAPICall():
             calendertext += event['start'].get('dateTime', event['start'].get('date'))+ " " + event['summary'] + "\n"
             CalenderLabel.config(text = calendertext)
 
-    CalenderLabel.after(15000, calendarAPICall) # Every 15 seconds
+    CalenderLabel.after(update_speed, calendarAPICall)
 
 def gmailAPICall():
+
+    global init_run
+    global gmail_unread_messages
     credentials = get_credentials_gmail()
     http = credentials.authorize(httplib2.Http())
     service = discovery.build('gmail', 'v1', http=http)
@@ -221,6 +226,22 @@ def gmailAPICall():
     print ("number of message: " + str(unread_mes_num) + '\n ')
     print (unread_mes_id)
 
+
+    popUpMessage = ''
+    if init_run == 1:
+        if gmail_unread_messages < unread_mes_num:
+            mess = service.users().messages().get(userId='me', id=unread_mes_id[0][u'id'], format='metadata').execute()
+            print(mess)
+            mess = mess[u'payload']
+            for header in mess[u'headers']:
+                if header[u'name'] == u'Subject':
+                    popUpMessage = header[u'value']
+                    break
+
+            GmailPopUp_Lable(popUpMessage)
+
+
+    gmail_unread_messages = unread_mes_num
     subject = [None]*10
     i=0
     if unread_mes_num == 0:
@@ -231,6 +252,7 @@ def gmailAPICall():
         for unreads in unread_mes_id:
             message1 = service.users().messages().get(userId='me', id=unreads[u'id'], format='metadata').execute()
             msg = message1[u'payload']
+            print(msg)
 
             for header in msg[u'headers']:
                 if header[u'name'] == u'Subject':
@@ -241,7 +263,9 @@ def gmailAPICall():
             i += 1
         GmailLabel.config(text=(subject[0] + "\n"))
 
-    GmailLabel.after(15000, gmailAPICall) # Every 15 seconds
+
+    init_run = 1
+    GmailLabel.after(update_speed, gmailAPICall)
 
 def displayWeatherImage(description):
 
@@ -268,8 +292,16 @@ def displayWeatherImage(description):
     WeatherImage.configure(image=photo)
     WeatherImage.image = photo
 
+def GmailPopUp_Lable(gmail_text):
 
+    GmailPopUp_Title.config(text = "Gmail Alert Unread Message")
+    GmailPopUp.config(text = gmail_text)
+    GmailPopUp.after(10000,GmailPopUp_Label_destroy)
 
+def GmailPopUp_Label_destroy():
+
+    GmailPopUp_Title.config(text = "")
+    GmailPopUp.config(text ="")
 ###################################################
 
 
@@ -363,6 +395,7 @@ CalenderLabel.pack(expand = 0)
 
 
 # Gmail Label #####################################################
+gmail_unread_messages = ''
 gmail_logo = Image.open("weatherImages/mail_logo.png")
 gmail_logo = gmail_logo.resize((35, 35), Image.ANTIALIAS)
 photo_mail = ImageTk.PhotoImage(gmail_logo)
@@ -372,6 +405,14 @@ gmail_Note.pack(expand=0)
 
 GmailLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground)
 GmailLabel.pack(expand = 0)
+
+GmailPopUp_Title= Label(root,font=(fonttype,20,fontstyle),bg='black',fg= foreground)
+GmailPopUp_Title.pack(expand = 0)
+GmailPopUp_Title.place(x=20,y=20)
+GmailPopUp= Label(root,font=(fonttype,12,fontstyle),bg='black',fg= foreground)
+GmailPopUp.pack(expand = 0)
+GmailPopUp.place(x=50,y=50)
+
 ###################################################################
 
 
@@ -385,6 +426,7 @@ stockAPICall()
 twitterAPICall()
 calendarAPICall()
 gmailAPICall()
+#GmailPopUp_Lable("hello")
 
 ###################################################
 
