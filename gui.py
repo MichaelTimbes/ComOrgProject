@@ -283,6 +283,8 @@ def displayWeatherImage(description):
         image = Image.open("weatherImages/scattered clouds.png")
     elif (description == 'overcast clouds'):
         image = Image.open("weatherImages/cloudy.png")
+    elif (description == 'clear sky'):
+        image = Image.open("weatherImages/sunny.png")
     else:
         image = Image.open("weatherImages/scattered clouds.png")
 
@@ -409,11 +411,12 @@ GmailLabel.pack(expand = 0)
 GmailPopUp_Title= Label(root,font=(fonttype,20,fontstyle),bg='black',fg= foreground)
 GmailPopUp_Title.pack(expand = 0)
 GmailPopUp_Title.place(x=20,y=20)
-GmailPopUp= Label(root,font=(fonttype,12,fontstyle),bg='black',fg= foreground)
+GmailPopUp = Label(root,font=(fonttype,12,fontstyle),bg='black',fg= foreground,wraplength=300)
 GmailPopUp.pack(expand = 0)
-GmailPopUp.place(x=50,y=50)
+GmailPopUp.place(x=20,y=50)
 
 ###################################################################
+
 
 
 
@@ -429,8 +432,6 @@ gmailAPICall()
 #GmailPopUp_Lable("hello")
 
 ###################################################
-
-
 
 
 ###################################################
