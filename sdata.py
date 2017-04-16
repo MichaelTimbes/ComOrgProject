@@ -11,7 +11,7 @@ from time import sleep
 #Then paste it as the string in the serial constructor.
 ser = serial.Serial()
 #this is specific to each Mac so be sure to update
-ser.port = '/dev/tty.usbmodemFD123'
+ser.port = '/dev/tty.usbmodemFD121'
 #Needed for later writing from buff
 ser.open()
 sio = io.TextIOWrapper(io.BufferedRWPair(ser, ser)) 
