@@ -1,7 +1,5 @@
 
 
-//www.elegoo.com
-//2016.06.13
 #include <NewPing.h>
 
 #define TRIGGER_PIN  12  // Arduino pin tied to trigger pin on the ultrasonic sensor.
@@ -15,10 +13,12 @@ void setup() {
 }
 
 void loop() {
-  delay(2000);  // Wait 500ms between pings (about 2 pings/sec). 29ms should be the shortest delay between pings.
+  delay(500);  // Wait 500ms between pings (about 2 pings/sec). 29ms should be the shortest delay between pings.
   unsigned int uS = sonar.ping(); // Send ping, get ping time in microseconds (uS).
+  //Serial.print("Ping: ");
   Serial.print(uS / US_ROUNDTRIP_CM); // Convert ping time to distance and print result (0 = outside set distance range, no ping echo)
-  //Serial.println("cm");
+  Serial.println(".00");
 }
+
 
 
