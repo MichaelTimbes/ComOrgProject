@@ -32,4 +32,4 @@ while True:
         time_write =0
         description.write("\n" )
         for item in description:
-            description.write("%s" % item)
+            thefile.write("%s " % item)
