@@ -100,7 +100,7 @@ def clockUpdate():
     global time1
     today = datetime.date.today()
     time2 = time.strftime('%H:%M:%S')
-    time2 = time2 + '\n'+str(today.strftime("%A \n%d %B %Y"))
+    #time2 = time2 + '\n'+str(today.strftime("%A \n%d %B %Y"))
 
     if time2 != time1:
         time1 = time2
@@ -125,8 +125,8 @@ def stockAPICall():
     if stock.status_code == 200:
         stock_json = xmltodict.parse(stock.content)
     print (stock_json)
-    StockData.config(text = "Stock: " + stock_json[u'StockQuote'][u'Name']
-                            +"\nStock Price: " + stock_json[u'StockQuote'][u'LastPrice'])
+    StockData.config(text = "Stocks:\n" + stock_json[u'StockQuote'][u'Name']
+                            +" $" + stock_json[u'StockQuote'][u'LastPrice'])
 
     print (stock_json[u'StockQuote'][u'Change'])
     if(float(stock_json[u'StockQuote'][u'Change']) > 0):
@@ -161,7 +161,7 @@ def weatherAPICall():
 
 
     WeatherTemp.config(text = data[u'weather'][0][u'description']
-                        + '\nTemperature: '
+                        + '\n'
                         + str(data[u'main'][u'temp'])
                         + t + 'C')
 
@@ -177,7 +177,7 @@ def twitterAPICall():
     api = tweepy.API(auth)
 
     potus_tweet = api.user_timeline(screen_name = 'cnnbrk',count=3)
-    result_tweet = potus_tweet[0].text + "\n" + potus_tweet[1].text + "\n" + potus_tweet[2].text
+    result_tweet = "-> " + potus_tweet[0].text + "\n \n-> " + potus_tweet[1].text + "\n\n-> " + potus_tweet[2].text
     print(result_tweet)
     result_tweet = re.sub(r"(?:\@|https?\://)\S+", "", result_tweet)
 
@@ -296,7 +296,7 @@ def displayWeatherImage(description):
 
 def GmailPopUp_Lable(gmail_text):
 
-    GmailPopUp_Title.config(text = "Gmail Alert Unread Message")
+    GmailPopUp_Title.config(text = "Gmail Alert \nUnread Message")
     GmailPopUp.config(text = gmail_text)
     GmailPopUp.after(10000,GmailPopUp_Label_destroy)
 
@@ -326,45 +326,48 @@ root = Tk()
 #Clock_Disp.pack(expand =0)
 
 time1 = ''
-Clock = Label(root, font=(fonttype, 40, fontstyle), bg='black',fg=foreground)
-Clock.pack(side = 'left')
-#Clock.place(x=900, y=700)
+Clock = Label(root, font=(fonttype, 30, fontstyle), bg='black',fg=foreground)
+
+Clock.place(x=1010, y=20)
+
+Date = Label(root, font=(fonttype, 20, fontstyle), bg='black',fg=foreground)
+
+Date.config (text = str(datetime.date.today().strftime("%A %d %B %Y")))
+
+Date.place(x=480, y=100)
 ###################################################################
 
 
 # Weather Object ##################################################
-WeatherTemp = Label(root, font=(fonttype,40,fontstyle),bg='black',fg= foreground)
-WeatherTemp.pack(side = RIGHT)
-#WeatherTemp.place(x=900, y=700)
-
 
 WeatherImage = Label(root,bg = 'black')
-WeatherImage.place(x=1000, y=100)
+WeatherImage.place(x=1000, y=70)
+
+WeatherTemp = Label(root, font=(fonttype,20,fontstyle),bg='black',fg= foreground, wraplength = 250)
+WeatherTemp.place(x=1010, y=270)
 
 ###################################################################
 
 
 # Stock Object ####################################################
-StockData = Label(root, font=(fonttype,40,fontstyle),bg='black',fg= foreground)
-StockData.place(x=750, y=600)
+StockData = Label(root, font=(fonttype,20,fontstyle),bg='black',fg= foreground,justify = 'left')
+StockData.place(x=1000, y=450)
 
 StockImage = Label(root,bg = 'black')
-StockImage.place(x=1150, y=600)
+StockImage.place(x=900, y=450)
 ###################################################################
 
 
 # Greeting Object #################################################
-DayGreet = Label(root, font=(fonttype, 65, fontstyle), bg='black',fg=foreground)
-DayGreet.pack()
-#DayGreet.place(x=300, y=50)
+DayGreet = Label(root, font=(fonttype, 50, fontstyle), bg='black',fg=foreground)
+DayGreet.place(x=300, y=10)
 ###################################################################
 
 
 # Footer ##########################################################
-Footer = Label(root, font=(fonttype,20, fontstyle), bg='black',fg=foreground)
-Footer.pack()
+Footer = Label(root, font=(fonttype,15, fontstyle), bg='black',fg=foreground)
 Footer.config(text = 'Project by Group 1: \nDominic Critchlow, Travis Hodge, Dylan Kellogg, Michael Timbes')
-Footer.place(x=500, y=700)
+Footer.place(x=200, y=950)
 ###################################################################
 
 
@@ -374,9 +377,9 @@ twitter_logo = twitter_logo.resize((45, 45), Image.ANTIALIAS)
 photo_twitter = ImageTk.PhotoImage(twitter_logo)
 TwitterNews = Label(root, font=(fonttype,25,fontstyle),bg='black',fg= foreground,justify = 'left',
                     image =photo_twitter,text = 'Twitter News',compound = 'left' )
-TwitterNews.pack()
-PotusTweet = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground,justify = 'left',wraplength=500, anchor=NW)
-PotusTweet.pack()
+TwitterNews.place(x=10, y= 200)
+PotusTweet = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground,justify = 'left',wraplength=300, anchor=NW)
+PotusTweet.place(x =10, y=250)
 ###################################################################
 
 
@@ -386,10 +389,10 @@ calendar_logo = calendar_logo.resize((30, 30), Image.ANTIALIAS)
 photo_calendar = ImageTk.PhotoImage(calendar_logo)
 Calendar_Note = Label(root, font=(fonttype,25,fontstyle),bg='black',fg= foreground,justify = 'left',
                     image =photo_calendar,text = 'Calendar',compound = 'left',wraplength=500, anchor=NW )
-Calendar_Note.pack()
+Calendar_Note.place(x = 10 ,y = 550)
 
 CalenderLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground)
-CalenderLabel.pack()
+CalenderLabel.place(x= 10, y=600)
 ###################################################################
 
 
@@ -399,18 +402,17 @@ gmail_logo = Image.open("weatherImages/mail_logo.png")
 gmail_logo = gmail_logo.resize((35, 35), Image.ANTIALIAS)
 photo_mail = ImageTk.PhotoImage(gmail_logo)
 gmail_Note = Label(root, font=(fonttype,25,fontstyle),bg='black',fg= foreground,justify = 'left',
-                    image =photo_mail,text = 'Mail',compound = 'left' ,wraplength=500, anchor=NW)
-gmail_Note.pack()
+                    image =photo_mail,text = 'Mail',compound = 'left' , anchor=NW)
+gmail_Note.place(x=10,y=700)
 
-GmailLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground)
-GmailLabel.pack()
+GmailLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground,wraplength=300, justify = 'left')
+GmailLabel.place(x=10,y=750)
 
-GmailPopUp_Title= Label(root,font=(fonttype,20,fontstyle),bg='black',fg= foreground)
+GmailPopUp_Title= Label(root,font=(fonttype,20,fontstyle),bg='red',fg= 'black',justify = 'left')
 GmailPopUp_Title.pack()
 GmailPopUp_Title.place(x=20,y=20)
-GmailPopUp = Label(root,font=(fonttype,12,fontstyle),bg='black',fg= foreground,wraplength=300)
-GmailPopUp.pack()
-GmailPopUp.place(x=20,y=50)
+GmailPopUp = Label(root,font=(fonttype,12,fontstyle),bg='red',fg= 'black',wraplength=200,justify = 'left')
+GmailPopUp.place(x=20,y=100)
 
 ###################################################################
 
