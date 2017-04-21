@@ -68,7 +68,7 @@ def call_serial():
 #Then paste it as the string in the serial constructor.
     ser = serial.Serial()
 #!!!!!!This is specific to each Mac so be sure to update!!!!!!!
-    ser.port = '/dev/tty.usbmodemFD121'
+    ser.port = '/dev/ttyACM0'
 #Needed for later writing from buff
     ser.open()
     sio = io.TextIOWrapper(io.BufferedRWPair(ser, ser)) 
@@ -77,7 +77,7 @@ def call_serial():
 #while True:
     line = ser.readline() 
     line = line.decode()
-    line = float(line) #Convert for use in numerical comparison later.
+    #line = float(line) #Convert for use in numerical comparison later.
     print(line)
     time.sleep(.1) #Small delay to be able to read serial out.
     sio.flush()
@@ -86,6 +86,7 @@ def call_serial():
 #############################################################
 def exit():
     root.quit()
+    t.quit()
 
 def get_credentials_calendar():
 
@@ -354,104 +355,149 @@ root = Tk()
 ###################################################################
 
 # Clock Object ####################################################
-#clock_logo = Image.open("weatherImages/clock_logo.png")
-#clock_logo = clock_logo.resize((45, 45), Image.ANTIALIAS)
-#photo_clock = ImageTk.PhotoImage(clock_logo)
-#Clock_Disp = Label(root, font=(fonttype,25,fontstyle),bg='black',fg= foreground,justify = 'left',
-                    #image =photo_clock,text = 'Current Time',compound = 'left' )
-
+clock_logo = Image.open("weatherImages/clock_logo.png")
+clock_logo = clock_logo.resize((45, 45), Image.ANTIALIAS)
+photo_clock = ImageTk.PhotoImage(clock_logo)
+Clock_Disp = Label(root, font=(fonttype,25,fontstyle),bg='black',fg= foreground,justify = 'left',
+image =photo_clock,text = 'Current Time',compound = 'left' )
 #Clock_Disp.pack(expand =0)
+Clock_Disp.grid(sticky=N,row=10,column=0)
 
 time1 = ''
-Clock = Label(root, font=(fonttype, 40, fontstyle), bg='black',fg=foreground)
-Clock.pack(side = 'left',expand=0)
+Clock = Label(root, font=(fonttype, 20, fontstyle), bg='red',fg=foreground)
+Clock.grid(sticky=N,row=0,column=0)
+
+
+
+#Clock.pack(side = 'left',expand=0,padx=15,pady=15)
 #Clock.place(x=900, y=700)
 ###################################################################
 
 
 # Weather Object ##################################################
-WeatherTemp = Label(root, font=(fonttype,40,fontstyle),bg='black',fg= foreground)
-WeatherTemp.pack(side = RIGHT, expand =0)
-#WeatherTemp.place(x=900, y=700)
 
+WeatherTemp = Label(root, font=(fonttype,40,fontstyle),bg='black',fg= foreground)
+WeatherTemp.grid(sticky=N, row=0, column=1)
 
 WeatherImage = Label(root,bg = 'black')
-WeatherImage.pack(expand = 0)
-WeatherImage.place(x=1000, y=100)
+WeatherImage.grid(sticky=N, row=0, column=2)
 
+
+
+##WeatherTemp.pack(side = RIGHT, expand =0)
+#WeatherTemp.place(x=900, y=700)
+##WeatherImage.pack(expand = 0)
+##WeatherImage.place(x=1000, y=100)
 ###################################################################
 
 
 # Stock Object ####################################################
+
 StockData = Label(root, font=(fonttype,40,fontstyle),bg='black',fg= foreground)
-StockData.pack(side = RIGHT, expand =0)
-StockData.place(x=750, y=600)
+StockData.grid(sticky=N, row=1, column=0)
 
 StockImage = Label(root,bg = 'black')
-StockImage.pack(expand = 0)
-StockImage.place(x=1150, y=600)
+StockImage.grid(sticky=N, row=1, column=1)
+
+
+
+#StockData.pack(side = RIGHT, expand =0)
+#StockData.place(x=750, y=600)
+##StockImage.pack(expand = 0, side= RIGHT)
+##StockImage.place(x=1150, y=600)
 ###################################################################
 
 
 # Greeting Object #################################################
-DayGreet = Label(root, font=(fonttype, 65, fontstyle), bg='black',fg=foreground)
-DayGreet.pack(side=TOP,expand=0)
+
+DayGreet = Label(root, font=(fonttype, 30, fontstyle), bg='black',fg=foreground)
+DayGreet.grid(sticky=N,row=1,column=2)
+
+
+
+##DayGreet.pack(side=TOP,expand=0, padx=150,pady=20)
 #DayGreet.place(x=900, y=700)
 ###################################################################
 
 
 # Footer ##########################################################
+
 Footer = Label(root, font=(fonttype,20, fontstyle), bg='black',fg=foreground)
-Footer.pack(side=BOTTOM,expand=0)
-Footer.config(text = 'Project by Group 1: \nDominic Critchlow, Travis Hodge, Dylan Kellogg, Michael Timbes')
+Footer.config(text = 'Project by Group 1: \nDominic Critchlow, Travis Hodge, \nDylan Kellogg, Michael Timbes')
+Footer.grid(sticky=N,row=2,column=0)
+
+
+
+#Footer.pack(side= 'bottom',padx= 100, pady=75)
 #Footer.place(x=900, y=700)
 ###################################################################
 
 
 # Twitter #########################################################
+
 twitter_logo = Image.open("weatherImages/twitter_logo.png")
 twitter_logo = twitter_logo.resize((45, 45), Image.ANTIALIAS)
 photo_twitter = ImageTk.PhotoImage(twitter_logo)
 TwitterNews = Label(root, font=(fonttype,25,fontstyle),bg='black',fg= foreground,justify = 'left',
-                    image =photo_twitter,text = 'Twitter News',compound = 'left' )
-TwitterNews.pack(expand=0)
+                    image =photo_twitter,text = 'Twitter News',compound = 'left',pady=2 )
+TwitterNews.grid(sticky=N,row=2,column=1)
+
 PotusTweet = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground,justify = 'left',wraplength=500, anchor=NW)
-PotusTweet.pack(expand = 0)
+PotusTweet.grid(sticky=N,row=2,column=2)
+
+
+
+#TwitterNews.pack(expand=0)
+#PotusTweet.pack(expand = 0)
 ###################################################################
 
 
 # Calendar Label ##################################################
+
 calendar_logo = Image.open("weatherImages/calendar_logo.png")
 calendar_logo = calendar_logo.resize((30, 30), Image.ANTIALIAS)
 photo_calendar = ImageTk.PhotoImage(calendar_logo)
 Calendar_Note = Label(root, font=(fonttype,25,fontstyle),bg='black',fg= foreground,justify = 'left',
                     image =photo_calendar,text = 'Calendar',compound = 'left',wraplength=500, anchor=NW )
-Calendar_Note.pack(expand=0)
+Calendar_Note.grid(sticky=N,row=3,column=0)
 
 CalenderLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground)
-CalenderLabel.pack(expand = 0)
+CalenderLabel.grid(sticky=N,row=3,column=1)
+
+
+
+##Calendar_Note.pack(expand=0)
+##CalenderLabel.pack(expand = 0)
 ###################################################################
 
 
 # Gmail Label #####################################################
+
 gmail_unread_messages = ''
 gmail_logo = Image.open("weatherImages/mail_logo.png")
 gmail_logo = gmail_logo.resize((35, 35), Image.ANTIALIAS)
 photo_mail = ImageTk.PhotoImage(gmail_logo)
 gmail_Note = Label(root, font=(fonttype,25,fontstyle),bg='black',fg= foreground,justify = 'left',
                     image =photo_mail,text = 'Mail',compound = 'left' ,wraplength=500, anchor=NW)
-gmail_Note.pack(expand=0)
+gmail_Note.grid(sticky=N,row=3,column=2)
 
 GmailLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground)
-GmailLabel.pack(expand = 0)
+GmailLabel.grid(sticky=N,row=4,column=0)
 
 GmailPopUp_Title= Label(root,font=(fonttype,20,fontstyle),bg='black',fg= foreground)
-GmailPopUp_Title.pack(expand = 0)
-GmailPopUp_Title.place(x=20,y=20)
-GmailPopUp = Label(root,font=(fonttype,12,fontstyle),bg='black',fg= foreground,wraplength=300)
-GmailPopUp.pack(expand = 0)
-GmailPopUp.place(x=20,y=50)
+GmailPopUp_Title.grid(sticky=N,row=4,column=1)
 
+GmailPopUp = Label(root,font=(fonttype,12,fontstyle),bg='black',fg= foreground,wraplength=300)
+GmailPopUp.grid(sticky=N,row=4,column=2)
+
+
+
+##gmail_Note.pack(expand=0)
+##GmailLabel.pack(expand = 0)
+##GmailPopUp_Title.pack(expand = 0)
+##GmailPopUp_Title.place(x=20,y=20)
+##GmailPopUp.pack(expand = 0)
+##GmailPopUp.place(x=20,y=50)
 ###################################################################
 
 
@@ -466,8 +512,8 @@ stockAPICall()
 twitterAPICall()
 calendarAPICall()
 gmailAPICall()
-serial_out = call_serial()
-#GmailPopUp_Lable("hello")
+#serial_out = call_serial()
+GmailPopUp_Lable("hello")
 
 ###################################################
 
@@ -475,33 +521,34 @@ serial_out = call_serial()
 ###################################################
 # Main structure of window
 w, h = root.winfo_screenwidth(), root.winfo_screenheight()
-root.overrideredirect(1)
+root.overrideredirect(0)
 root.geometry("%dx%d+0+0" % (w, h))
 root.focus_set() # <-- move focus to this widget
 root.bind("<Escape>", exit)
 root.configure(background='black')
-t = Toplevel(root)
-t.configure(background='black')
-t.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(),root.winfo_screenheight()))
-t.title('Step Infront of Sensor to View')
-s_flag = 'down'
-while True:
-    serial_out = call_serial()
+##t = Toplevel(root)
+##t.configure(background='black')
+######t.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(),root.winfo_screenheight()))
+##t.title('Step Infront of Sensor to View')
+##t.bind("<Escape>", exit)
+##s_flag = 'down'
+##while True:
+##    serial_out = call_serial()
     
-    if(serial_out > 10.0):
-        if(s_flag == 'up'):
+##    if(serial_out > 10.0):
+##        if(s_flag == 'up'):
             #Needed so that start up isn't slow.
-            time.sleep(5)
-            s_flag = 'down'
+##            time.sleep(5)
+##            s_flag = 'down'
         #If the distance is greater than 10cm, lower blank screen.
-        root.lower(t)
-    elif(serial_out < 10.0):
-        #If the distance is greater than 10cm, lift blank screen.
-        root.lift(t)
-        s_flag = 'up'
+##        root.lower(t)
+##    elif(serial_out < 10.0):
+##        #If the distance is greater than 10cm, lift blank screen.
+##        root.lift(t)
+##        s_flag = 'up'
     # May be a little unstable but works for manually refreshing screen.
-    root.update_idletasks()
-    root.update()
+##    root.update_idletasks()
+##    root.update()
 # Running of the GUI Loop
-#root.mainloop(  )
+root.mainloop(  )
 ###################################################
