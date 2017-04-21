@@ -327,19 +327,18 @@ root = Tk()
 
 time1 = ''
 Clock = Label(root, font=(fonttype, 40, fontstyle), bg='black',fg=foreground)
-Clock.pack(side = 'left',expand=0)
+Clock.pack(side = 'left')
 #Clock.place(x=900, y=700)
 ###################################################################
 
 
 # Weather Object ##################################################
 WeatherTemp = Label(root, font=(fonttype,40,fontstyle),bg='black',fg= foreground)
-WeatherTemp.pack(side = RIGHT, expand =0)
+WeatherTemp.pack(side = RIGHT)
 #WeatherTemp.place(x=900, y=700)
 
 
 WeatherImage = Label(root,bg = 'black')
-WeatherImage.pack(expand = 0)
 WeatherImage.place(x=1000, y=100)
 
 ###################################################################
@@ -347,27 +346,25 @@ WeatherImage.place(x=1000, y=100)
 
 # Stock Object ####################################################
 StockData = Label(root, font=(fonttype,40,fontstyle),bg='black',fg= foreground)
-StockData.pack(side = RIGHT, expand =0)
 StockData.place(x=750, y=600)
 
 StockImage = Label(root,bg = 'black')
-StockImage.pack(expand = 0)
 StockImage.place(x=1150, y=600)
 ###################################################################
 
 
 # Greeting Object #################################################
 DayGreet = Label(root, font=(fonttype, 65, fontstyle), bg='black',fg=foreground)
-DayGreet.pack(side=TOP,expand=0)
-#DayGreet.place(x=900, y=700)
+DayGreet.pack()
+#DayGreet.place(x=300, y=50)
 ###################################################################
 
 
 # Footer ##########################################################
 Footer = Label(root, font=(fonttype,20, fontstyle), bg='black',fg=foreground)
-Footer.pack(side=BOTTOM,expand=0)
+Footer.pack()
 Footer.config(text = 'Project by Group 1: \nDominic Critchlow, Travis Hodge, Dylan Kellogg, Michael Timbes')
-#Footer.place(x=900, y=700)
+Footer.place(x=500, y=700)
 ###################################################################
 
 
@@ -377,9 +374,9 @@ twitter_logo = twitter_logo.resize((45, 45), Image.ANTIALIAS)
 photo_twitter = ImageTk.PhotoImage(twitter_logo)
 TwitterNews = Label(root, font=(fonttype,25,fontstyle),bg='black',fg= foreground,justify = 'left',
                     image =photo_twitter,text = 'Twitter News',compound = 'left' )
-TwitterNews.pack(expand=0)
+TwitterNews.pack()
 PotusTweet = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground,justify = 'left',wraplength=500, anchor=NW)
-PotusTweet.pack(expand = 0)
+PotusTweet.pack()
 ###################################################################
 
 
@@ -389,10 +386,10 @@ calendar_logo = calendar_logo.resize((30, 30), Image.ANTIALIAS)
 photo_calendar = ImageTk.PhotoImage(calendar_logo)
 Calendar_Note = Label(root, font=(fonttype,25,fontstyle),bg='black',fg= foreground,justify = 'left',
                     image =photo_calendar,text = 'Calendar',compound = 'left',wraplength=500, anchor=NW )
-Calendar_Note.pack(expand=0)
+Calendar_Note.pack()
 
 CalenderLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground)
-CalenderLabel.pack(expand = 0)
+CalenderLabel.pack()
 ###################################################################
 
 
@@ -403,16 +400,16 @@ gmail_logo = gmail_logo.resize((35, 35), Image.ANTIALIAS)
 photo_mail = ImageTk.PhotoImage(gmail_logo)
 gmail_Note = Label(root, font=(fonttype,25,fontstyle),bg='black',fg= foreground,justify = 'left',
                     image =photo_mail,text = 'Mail',compound = 'left' ,wraplength=500, anchor=NW)
-gmail_Note.pack(expand=0)
+gmail_Note.pack()
 
 GmailLabel = Label(root, font=(fonttype,12,fontstyle),bg='black',fg= foreground)
-GmailLabel.pack(expand = 0)
+GmailLabel.pack()
 
 GmailPopUp_Title= Label(root,font=(fonttype,20,fontstyle),bg='black',fg= foreground)
-GmailPopUp_Title.pack(expand = 0)
+GmailPopUp_Title.pack()
 GmailPopUp_Title.place(x=20,y=20)
 GmailPopUp = Label(root,font=(fonttype,12,fontstyle),bg='black',fg= foreground,wraplength=300)
-GmailPopUp.pack(expand = 0)
+GmailPopUp.pack()
 GmailPopUp.place(x=20,y=50)
 
 ###################################################################
