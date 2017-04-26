@@ -43,7 +43,7 @@ StockTicker = "AAPL"
 # size of the weather icon needs to be adjusted for final screen
 sizex = 250
 sizey = 250
-update_speed = 15000
+update_speed = 5000
 
 init_run = 0
 
